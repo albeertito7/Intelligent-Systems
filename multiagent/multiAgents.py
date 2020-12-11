@@ -18,7 +18,7 @@ import random, util
 
 from game import Agent
 
-class ReflexAgent(Agent): 
+class ReflexAgent(Agent): ## just look at ur possible actions and apply a functions about how good would be the actions but just think one step ahead, not building a tree as the minimax function
     """
       A reflex agent chooses an action at each choice point by examining
       its alternatives via a state evaluation function.
