@@ -222,9 +222,9 @@ class MinimaxAgent(MultiAgentSearchAgent): ## class for the minimax
         actionSet = []
         for action in actions(gameState, 0): ## agent 0 (pacman) which is the one who apply the minimax-decision function
           u = min_value(result(gameState, 0, action), 1, self.depth) ## the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
-          if u == v:
+          if u == v: ## if the value is equal, add to the set of actions
             actionSet.append(action)
-          elif u > v:
+          elif u > v: ## if its a better value (max), reinitialize the set of good actions
             v = u
             actionSet = [action]
         
