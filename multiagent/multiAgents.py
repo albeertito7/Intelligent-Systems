@@ -291,7 +291,8 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
           elif u > v: ## if its a better value (max), reinitialize the set of good actions
             v = u
             actionSet = [action]
-          alpha = max(alpha, v)
+          alpha = max(alpha, v) ## we musn't sent always the minus infinite, we need to pass the actual alpha
+          ## in the root node we r not pruning by beta
 
         return random.choice(actionSet) 
 
@@ -308,7 +309,64 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
           legal moves.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        import sys
+
+        def result(gameState, agent, action):
+            return gameState.generateSuccessor(agent, action)
+
+        def utility(gameState):
+            return self.evaluationFunction(gameState)
+
+        def terminalTest(gameState, depth):
+            return depth == 0 or gameState.isWin() or gameState.isLose()
+
+        def actions(gameState, agent):
+          return gameState.getLegalActions(agent)
+
+        ## the max_value function will be the same as minimax algorithm, not applying the probabilities
+        def max_value(gameState, agent, depth):
+          if terminalTest(gameState, depth):
+            return utility(gameState)
+          v = -sys.maxint
+          for action in actions(gameState, agent):
+            v = max(v, min_value(result(gameState, agent, action), 1, depth))
+          return v
+
+        def min_value(gameState, agent, depth):
+          if terminalTest(gameState, depth):
+            return utility(gameState)
+          v = []
+          for action in actions(gameState, agent):
+            if(agent == gameState.getNumAgents()-1):
+              v.append(max_value(result(gameState, agent, action), 0, depth-1))
+            else:
+              v.append(min_value(result(gameState, agent, action), agent+1, depth))
+          return sum(v)/float(len(v))
+          
+          """
+          v = 0
+          actionsList =  actions(gameState, agent)
+          for action in actionsList:
+            if(agent == gameState.getNumAgents()-1):
+              v += max_value(result(gameState, agent, action), 0, depth-1)
+            else:
+              v += min_value(result(gameState, agent, action), agent+1, depth)
+          return v/float(len(actionsList))
+          """
+
+        ## return action!!! ## minimax-decision algorithm applied
+        v = -sys.maxint
+        actionSet = []
+        for action in actions(gameState, 0): ## agent 0 (pacman) which is the one who apply the minimax-decision function
+          u = min_value(result(gameState, 0, action), 1, self.depth) ## the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
+          if u == v: ## if the value is equal, add to the set of actions
+            actionSet.append(action)
+          elif u > v: ## if its a better value (max), reinitialize the set of good actions
+            v = u
+            actionSet = [action]
+        
+        ## need to return the action that pacman must take
+        return random.choice(actionSet) ## random choice between all minimax actions got
 
 def betterEvaluationFunction(currentGameState):
     """
