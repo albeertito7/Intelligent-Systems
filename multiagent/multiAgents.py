@@ -79,10 +79,10 @@ class ReflexAgent(Agent): ## just look at ur possible actions and apply a functi
         print "NewPos", newPos
         print "NewFood", newFood #false (F) no foow, true (T) there is food 
 
-        ##first of all lets have a look at the food, then we'll focus on the ghosts
+        ## first of all lets have a look at the food, then we'll focus on the ghosts
 
         "*** YOUR CODE HERE ***"
-        ##return successorGameState.getScore() ## need to return the score
+        ## return successorGameState.getScore() ## need to return the score
 
         old_food = currentGameState.getFood() ## old food state, is a matrix
         total_score = 0.0 ## our personal score to be returned
@@ -175,52 +175,60 @@ class MinimaxAgent(MultiAgentSearchAgent): ## class for the minimax
             Returns the total number of agents in the game
         """
         "*** YOUR CODE HERE ***"
+        ## implementation functions for doing minimax-decision algorithm
         import sys
         
-        ## implementation functions for doing minimax-decision algorithm
+        ## transition model, defines the result (newGameState) of an agent's action in a gameState
         def result(gameState, agent, action):
           return gameState.generateSuccessor(agent, action)
+        
+        ## return the set of legal actions of an agent in a specific state
+        def actions(gameState, agent):
+          return gameState.getLegalActions(agent)
 
+        ## defines the final numeric value for a game that ends in terminal state
         def utility(gameState):
           return self.evaluationFunction(gameState)
 
+        ## which is true when the game is over, otherwise is false
         def terminalTest(gameState, depth): ## how much depth is left? how much further pacman can go through the tree? ## self.depth is not this one
           return depth == 0 or gameState.isWin() or gameState.isLose()
 
+        ## 
         def max_value(gameState, agent, depth):
           if terminalTest(gameState, depth):
             return utility(gameState)
           v = -sys.maxint ## represents minus infinite
-          for action in gameState.getLegalActions(agent):
+          for action in actions(gameState, agent):
             v = max(v, min_value(result(gameState, agent, action), 1, depth)) ## 1 cuz its the max player the agent
           return v
 
+        ##
         def min_value(gameState, agent, depth):
           if terminalTest(gameState, depth):
             return utility(gameState)
           v = sys.maxint
-          for action in gameState.getLegalActions(agent):
+          for action in actions(gameState, agent):
             if(agent == gameState.getNumAgents()-1): ## minus 1 cuz this is the max player needs to be removed
               v = min(v, max_value(result(gameState, agent, action), 0, depth-1)) ## 0 cuz the next player to move is max, depth-1 we got a move
             else:
-              v = min(v, min_value(result(gameState, agent, action), agent+1, depth)) ##the same depth we not completed the move
+              v = min(v, min_value(result(gameState, agent, action), agent+1, depth)) ## the same depth we not completed the move
           return v
 
 
-        # return action!!! ##minimax-decision algorithm applied
+        ## return action!!! ## minimax-decision algorithm applied
         v = -sys.maxint
-        actions = []
-        for action in gameState.getLegalActions(0): ##agent 0 (pacman) which is the one who apply the minimax-decision function
-          u = min_value(result(gameState, 0, action), 1, self.depth) ##the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
+        actionSet = []
+        for action in actions(gameState, 0): ## agent 0 (pacman) which is the one who apply the minimax-decision function
+          u = min_value(result(gameState, 0, action), 1, self.depth) ## the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
           if u == v:
-            actions.append(action)
+            actionSet.append(action)
           elif u > v:
             v = u
-            actions = [action]
+            actionSet = [action]
         
-        return random.choice(actions) ##random choice between all minimax actions got
-
-        #util.raiseNotDefined() ##need to return the action that pacman must take
+        ## need to return the action that pacman must take
+        return random.choice(actionSet) ## random choice between all minimax actions got
 
 class AlphaBetaAgent(MultiAgentSearchAgent):
     """
