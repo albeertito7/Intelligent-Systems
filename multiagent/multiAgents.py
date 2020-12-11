@@ -219,6 +219,7 @@ class MinimaxAgent(MultiAgentSearchAgent): ## class for the minimax
             actions = [action]
         
         return random.choice(actions)
+        
 
         #util.raiseNotDefined() ##need to return the action that pacman must take
 
