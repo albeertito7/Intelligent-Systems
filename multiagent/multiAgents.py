@@ -211,11 +211,11 @@ class MinimaxAgent(MultiAgentSearchAgent): ## class for the minimax
         v = -sys.maxint
         actions = []
         for action in gameState.getLegalActions(0): ## agent 0 (pacman) which is the one who apply the minimax-decision function
-          utility = min_value(result(gameState, 0, action), 1, self.depth) ## the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
-          if utility == v:
+          u = min_value(result(gameState, 0, action), 1, self.depth) ## the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
+          if u == v:
             actions.append(action)
-          elif utility >= v:
-            v = utility
+          elif u > v:
+            v = u
             actions = [action]
         
         return random.choice(actions)
