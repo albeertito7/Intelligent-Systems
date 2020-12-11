@@ -86,19 +86,17 @@ class ReflexAgent(Agent):
 
         old_food = currentGameState.getFood() ## old food state, is a matrix
         total_score = 0.0 ## our personal score to be returned
-        
-        print "Old_food.width", old_food.width
-        print "Old_food.height", old_food.height
 
         for x in xrange(old_food.width):
           for y in xrange(old_food.height):
             if old_food[x][y]: ## if there is food
-              d = manhattanDistance((x, y), newPos)
-              if d==0:
-                  total_score += 100
+              d = manhattanDistance((x, y), newPos) ## compute the right angle distance between food coordinates and new pacman position
+              if d==0: ## if its next to the pacman
+                  total_score += 100 ## add a good value to the score
               else:
-                total_score += 1.0/(d*d)
-                
+                total_score += 1.0/(d*d) ## add a value depending on the distance
+
+        ## need to consider not only the food but also the position of the ghost that must affect the score too 
         for ghost in newGhostStates:
           d = manhattanDistance(ghost.getPosition(), newPos)
           if d<=1:
@@ -107,6 +105,8 @@ class ReflexAgent(Agent):
             else:
               total_score -= 200
 
+        ## also would be so interesting to consider the capsules/fruits and if it's good or not to eat these ones
+        ## for now we are considering them as the highest valueble elements, not applying any kind of condition
         for capsule in currentGameState.getCapsules():
           d = manhattanDistance(capsule, newPos) 
           if d==0:
@@ -210,15 +210,15 @@ class MinimaxAgent(MultiAgentSearchAgent): ## class for the minimax
         # return action!!! ##minimax-decision algorithm applied
         v = -sys.maxint
         actions = []
-        for action in gameState.getLegalActions(0): ## agent 0 (pacman) which is the one who apply the minimax-decision function
-          u = min_value(result(gameState, 0, action), 1, self.depth) ## the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
+        for action in gameState.getLegalActions(0): ##agent 0 (pacman) which is the one who apply the minimax-decision function
+          u = min_value(result(gameState, 0, action), 1, self.depth) ##the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
           if u == v:
             actions.append(action)
           elif u > v:
             v = u
             actions = [action]
         
-        return random.choice(actions)
+        return random.choice(actions) ##random choice between all minimax actions got
 
         #util.raiseNotDefined() ##need to return the action that pacman must take
 
