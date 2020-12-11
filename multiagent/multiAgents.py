@@ -196,25 +196,26 @@ class MinimaxAgent(MultiAgentSearchAgent): ## class for the minimax
 
         ## 
         def max_value(gameState, agent, depth):
-          if terminalTest(gameState, depth):
-            return utility(gameState)
-          v = -sys.maxint ## represents minus infinite
-          for action in actions(gameState, agent):
-            v = max(v, min_value(result(gameState, agent, action), 1, depth)) ## 1 cuz its the max player the agent
+          if terminalTest(gameState, depth): ## is a terminal state or need to stop going deeper
+            return utility(gameState) ## returns the score value
+          v = -sys.maxint ## represents minus infinite, temporal variable, need to find the max of the minimum value
+          for action in actions(gameState, agent): ## iterate through the set of legal actions
+            ## getting the max between thee temporal var and the min_value result function
+            ## min_value: gets the min utility value of the gameStates from applying the action
+            v = max(v, min_value(result(gameState, agent, action), 1, depth)) ## 1 cuz the next agent is the first ghost
           return v
 
         ##
         def min_value(gameState, agent, depth):
           if terminalTest(gameState, depth):
             return utility(gameState)
-          v = sys.maxint
+          v = sys.maxint ## represents infinite, temporal variable, need to find the min of the values
           for action in actions(gameState, agent):
-            if(agent == gameState.getNumAgents()-1): ## minus 1 cuz this is the max player needs to be removed
-              v = min(v, max_value(result(gameState, agent, action), 0, depth-1)) ## 0 cuz the next player to move is max, depth-1 we got a move
+            if(agent == gameState.getNumAgents()-1): ## minus 1 cuz the max player needs to be removed from the agents count
+              v = min(v, max_value(result(gameState, agent, action), 0, depth-1)) ## 0 cuz the next player to move is the max one, depth-1 we got a move
             else:
-              v = min(v, min_value(result(gameState, agent, action), agent+1, depth)) ## the same depth we not completed the move
+              v = min(v, min_value(result(gameState, agent, action), agent+1, depth)) ## the same depth, a move is not completed
           return v
-
 
         ## return action!!! ## minimax-decision algorithm applied
         v = -sys.maxint
