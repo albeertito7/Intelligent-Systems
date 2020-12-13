@@ -90,25 +90,22 @@ def depthFirstSearch(problem):
     
     startingNode = problem.getStartState()
 
-    if problem.isGoalState(startingNode): ## terminal test
-        return []
+    stack = util.Stack() ## create the stack
+    visitedNodes = [] ## create the list of visited nodes
 
-    stack = util.Stack()
-    visitedNodes = []
+    stack.push((startingNode, [])) ## push the startingNode with the list of actions empty cuz it's the beginning one
 
-    stack.push((startingNode, []))
+    while not stack.isEmpty(): ## if the stack is empty means all the tree nodes were visited, so the search is finished
+        currentNode, actions = stack.pop() ## retrieve the tuple
 
-    while not stack.isEmpty():
-        currentNode, actions = stack.pop()
+        if problem.isGoalState(currentNode): ## terminal test
+            return actions ## return the actions
 
-        if currentNode not in visitedNodes:
-            visitedNodes.append(currentNode)
+        if currentNode not in visitedNodes: ## if not visited
+            visitedNodes.append(currentNode) ## add current node if it's the first time when visited
 
-            if problem.isGoalState(currentNode):
-                return actions
-
-            for nextNode, action, cost in problem.getSuccessors(currentNode):
-                newAction = actions + [action]
+            for nextNode, action, cost in problem.getSuccessors(currentNode): ## for each successor add it and the its action path to the stack
+                newAction = actions + [action] ## the newAction path, add the new action the get the succesor to the action path list done till now
                 stack.push((nextNode, newAction))
 
 def breadthFirstSearch(problem):
