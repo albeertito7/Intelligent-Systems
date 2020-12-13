@@ -90,7 +90,7 @@ def depthFirstSearch(problem):
     
     startingNode = problem.getStartState()
 
-    stack = util.Stack() ## create the stack
+    stack = util.Stack() ## create the stack ## LIFO (Last-In First-Out)
     visitedNodes = [] ## create the list of visited nodes
 
     stack.push((startingNode, [])) ## push the startingNode with the list of actions empty cuz it's the beginning one
@@ -111,7 +111,24 @@ def depthFirstSearch(problem):
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    startingNode = problem.getStartState()
+
+    queue = util.Queue() ## create the queue ## FIFO (First-In First-Out)
+    visitedNodes = []
+    queue.push((startingNode, []))
+
+    while not queue.isEmpty():
+        currentNode, actions = queue.pop()
+
+        if problem.isGoalState(currentNode):
+                return actions
+
+        if currentNode not in visitedNodes:
+            visitedNodes.append(currentNode)
+
+            for nextNode, action, cost in problem.getSuccessors(currentNode):
+                newAction = actions + [action]
+                queue.push((nextNode, newAction))
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
