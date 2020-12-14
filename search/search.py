@@ -136,10 +136,9 @@ def uniformCostSearch(problem):
     
     startingNode = problem.getStartState()
 
+    queue = util.PriorityQueue() ## using a priority queue
     visitedNodes = []
-
-    queue = util.PriorityQueue()
-    queue.push((startingNode, [], 0), 0)
+    queue.push((startingNode, [], 0), 0) ## structure: ((node, actions path to the node, cost), priority)
 
     while not queue.isEmpty():
 
@@ -153,7 +152,7 @@ def uniformCostSearch(problem):
 
             for nextNode, action, cost in problem.getSuccessors(currentNode):
                 newAction = actions + [action]
-                priority = prevCost + cost
+                priority = prevCost + cost ## resolving the next cost/priority
                 queue.push((nextNode, newAction, priority), priority)
 
 def nullHeuristic(state, problem=None):
