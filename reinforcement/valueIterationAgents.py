@@ -40,11 +40,23 @@ class ValueIterationAgent(ValueEstimationAgent):
         """
         self.mdp = mdp
         self.discount = discount
-        self.iterations = iterations
-        self.values = util.Counter() # A Counter is a dict with default 0
+        self.iterations = iterations ## the depth
+        self.values = util.Counter() # A Counter is a dict with default 0 ## hash value, going to store the v values
 
         # Write value iteration code here
-        "*** YOUR CODE HERE ***"
+        "*** YOUR CODE HERE ***" ## in the code we must update the self.values
+        for i in range(self.iterations):
+            values = util.Counter() ## totalCount
+
+            ## need to explore all the states
+            for state in self.mdp.getStates(): ##
+                ##compute all q-values for each possible action for the state
+                QValueForAction = util.Counter() ## keys are actions, values are q-values
+                for action in self.mdp.getPossibleActions(state):
+                    ## update the hash of q-values
+                    QValueForAction[action] = self.computeQValueFromValues(state, action)
+                value[state] = QValueForAction[QValueForAction.argMax()]
+            self.values = values ## at the end, update values to go to the next step
 
 
     def getValue(self, state):
@@ -54,15 +66,18 @@ class ValueIterationAgent(ValueEstimationAgent):
         return self.values[state]
 
 
-    def computeQValueFromValues(self, state, action):
+    def computeQValueFromValues(self, state, action): ## returns the Q-value of the (state, action) pair given by the value function given by self.values
         """
           Compute the Q-value of action in state from the
           value function stored in self.values.
         """
         "*** YOUR CODE HERE ***"
+        QValue = 0
+
+        return QValue
         util.raiseNotDefined()
 
-    def computeActionFromValues(self, state):
+    def computeActionFromValues(self, state): ## computes the best action according to the value function given by self.values
         """
           The policy is the best action in the given state
           according to the values currently stored in self.values.
