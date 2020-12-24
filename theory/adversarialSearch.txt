@@ -1,0 +1,72 @@
+Adversarial Search
+
+
+We examine the problems that arise when we try to plan ahead in a world where other agents are planning against us
+
+Multiagent environments: each agent needs to consider the actions of other agents and how they affect its own welfare
+
+The unpredictability of these other agents introduce contingencies, to act against the adversarials
+
+Our goal is to have a CONTINGENT PLAN to win the game, to neutralize the adversarial agents
+
+We look into competitive environments, where agents’ goals are in conflict, giving rise to ADVERSARIAL GAMES
+
+
+**Reflex agent: just look at ur possible actions and apply a functions about how good woudl be the actions but just think one step ahead, not building a tree as the minimax function**
+
+Most common games are: deterministic, turn-taking, two-player, zero-sum games of perfect information (e.g. chess)
+    - Deterministic: you know the result of the actions
+    - Turn-taking: game based on turns among players
+    - Zero-sum: every gain of one player comes cuz the other is losing, balanced
+    - Perfect information: we know every thing about the game, about the state of the game
+    - Imperfect information: we dont know everything, a partial view (e.g. shooter: only is known our game view)
+    - Chance: you don't know exactly the result of the actions, there is involved the probability
+
+
+Two Player Game (Max-Min)
+    - Max moves first
+    - turn-taking untill the game is over
+    - zero-sum game: the points go to winner and penalties to loser
+
+
+How to well describe a game formally? And then apply algorithms
+
+A game can be formally defined as a kind of search problem with the following elements:
+    - S0: initial state: how the game is set up at the start
+    - player(s): define which player has the move in a state s
+    - actions(s): possible moves for a state, returns the set of legal moves in a state s
+    - result(s, a): transition model, given a state and an action which is the result state
+    - terminal-test(s): Is the game over? a test which is true when the game in a state is over or otherwise is false
+    - utility(s, p):  
+        - A utility function, defines the final numeric value for a game that ends in terminal state s for a player p
+        - In chess, outcome is a win, loss, or draw, with values +1, 0, or 1
+        - defines the game result for the player p in a terminal state s
+        - evaluation function; p = player
+
+**The initial state, ACTIONS function, and RESULT function define the game tree, where nodes are game states and the edges are moves**
+
+
+OPTIMAL DECISION IN GAMES
+
+- In a normal search problem, the optimal solution is a sequence of actions leading to a goal state (terminal state that is a win).
+- In adversarial search, an optimal solution for MAX is a tree of actions specifying what to do depending of what MIN plays => CONTINGENT PLAN
+
+Min player: the one its trying to take an action to minimize the utility function => the adversarial
+Max player: via utility functions know how which possible moves will have to take the min player
+
+Given a game tree, the optimal strategy can be determined from the MINIMAX VALUE of each node, which we write as MINIMAX(n).
+**in a tree: nodes are states, edges are actions**
+
+The minimax value of a node is the utility (for MAX) of being in the corresponding state
+
+Obiously, the minimax value of a terminal state is just its utility
+
+**Furthermore, if playing optimally, MAX preferes to move to a state of a maximum value whereas MIN prefers a state of minimum value**
+
+**If MIN does not play optimally, MAX using the minimax algorithm will do even better**
+
+Other strategies against suboptimal opponents may do better than the minimax strategy, but these strategies necessarily do worse against optimal opponents.
+
+THE MINIMAX RECURSIVE ALGORITHM
+    - use the second approach => recursive version
+    - solved the problem about exponential memory required with the Bredth First Search Minimax algorithm
