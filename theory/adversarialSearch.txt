@@ -1,5 +1,4 @@
-Adversarial Search
-
+ADVERSARIAL SEARCH
 
 We examine the problems that arise when we try to plan ahead in a world where other agents are planning against us
 
@@ -13,6 +12,7 @@ We look into competitive environments, where agents’ goals are in conflict, gi
 
 
 **Reflex agent: just look at ur possible actions and apply a functions about how good woudl be the actions but just think one step ahead, not building a tree as the minimax function**
+
 
 Most common games are: deterministic, turn-taking, two-player, zero-sum games of perfect information (e.g. chess)
     - Deterministic: you know the result of the actions
@@ -66,6 +66,7 @@ Obiously, the minimax value of a terminal state is just its utility
 **If MIN does not play optimally, MAX using the minimax algorithm will do even better**
 
 Other strategies against suboptimal opponents may do better than the minimax strategy, but these strategies necessarily do worse against optimal opponents.
+
 
 THE MINIMAX RECURSIVE ALGORITHM
     - use the second approach => recursive version
