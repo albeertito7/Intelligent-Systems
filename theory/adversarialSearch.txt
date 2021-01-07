@@ -1,4 +1,5 @@
-ADVERSARIAL SEARCH
+Adversarial Search
+
 
 We examine the problems that arise when we try to plan ahead in a world where other agents are planning against us
 
@@ -11,15 +12,15 @@ Our goal is to have a CONTINGENT PLAN to win the game, to neutralize the adversa
 We look into competitive environments, where agents’ goals are in conflict, giving rise to ADVERSARIAL GAMES
 
 
-**Reflex agent: just look at ur possible actions and apply a functions about how good woudl be the actions but just think one step ahead, not building a tree as the minimax function**
-
+**Reflex agent: just look at ur possible actions and apply a functions about how good would be the actions but just think one step ahead, not building a tree as the minimax function**
+**Reflex agent is not optimal and not exponential**
 
 Most common games are: deterministic, turn-taking, two-player, zero-sum games of perfect information (e.g. chess)
     - Deterministic: you know the result of the actions
     - Turn-taking: game based on turns among players
-    - Zero-sum: every gain of one player comes cuz the other is losing, balanced
+    - Zero-sum: every gain of one player comes because the other is losing, balanced
     - Perfect information: we know every thing about the game, about the state of the game
-    - Imperfect information: we dont know everything, a partial view (e.g. shooter: only is known our game view)
+    - Imperfect information: we don't know everything, a partial view (e.g. shooter: only is known our game view)
     - Chance: you don't know exactly the result of the actions, there is involved the probability
 
 
@@ -42,6 +43,7 @@ A game can be formally defined as a kind of search problem with the following el
         - In chess, outcome is a win, loss, or draw, with values +1, 0, or 1
         - defines the game result for the player p in a terminal state s
         - evaluation function; p = player
+	- how good is the sate for the specified player
 
 **The initial state, ACTIONS function, and RESULT function define the game tree, where nodes are game states and the edges are moves**
 
@@ -66,7 +68,6 @@ Obiously, the minimax value of a terminal state is just its utility
 **If MIN does not play optimally, MAX using the minimax algorithm will do even better**
 
 Other strategies against suboptimal opponents may do better than the minimax strategy, but these strategies necessarily do worse against optimal opponents.
-
 
 THE MINIMAX RECURSIVE ALGORITHM
     - use the second approach => recursive version
