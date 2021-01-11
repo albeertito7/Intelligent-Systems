@@ -1,19 +1,25 @@
 Adversarial Search
-
+	
+- decide how to act when there's an adversary/agent in your world
+- you're not the only person action in the environment
 
 We examine the problems that arise when we try to plan ahead in a world where other agents are planning against us
 
-Multiagent environments: each agent needs to consider the actions of other agents and how they affect its own welfare
+Multiagent environments:
+	- each agent needs to consider the actions of other agents and how they affect its own welfare
+	- the unpredictability of these other agents introduce contingencies, to act against the adversarials
 
-The unpredictability of these other agents introduce contingencies, to act against the adversarials
+GOAL:
+	- to have a CONTINGENT PLAN to win the game, to neutralize the adversarial agents
+	- we need to give a function which tells us in any given state what to do
 
-Our goal is to have a CONTINGENT PLAN to win the game, to neutralize the adversarial agents
 
 We look into competitive environments, where agents’ goals are in conflict, giving rise to ADVERSARIAL GAMES
 
 
 **Reflex agent: just look at ur possible actions and apply a functions about how good would be the actions but just think one step ahead, not building a tree as the minimax function**
 **Reflex agent is not optimal and not exponential**
+
 
 Most common games are: deterministic, turn-taking, two-player, zero-sum games of perfect information (e.g. chess)
     - Deterministic: you know the result of the actions
@@ -24,15 +30,9 @@ Most common games are: deterministic, turn-taking, two-player, zero-sum games of
     - Chance: you don't know exactly the result of the actions, there is involved the probability
 
 
-Two Player Game (Max-Min)
-    - Max moves first
-    - turn-taking untill the game is over
-    - zero-sum game: the points go to winner and penalties to loser
+How to well describe a game formally? And then we will be able to apply algorithms
 
-
-How to well describe a game formally? And then apply algorithms
-
-A game can be formally defined as a kind of search problem with the following elements:
+A deterministic game can be formally defined as a kind of search problem with the following elements:
     - S0: initial state: how the game is set up at the start
     - player(s): define which player has the move in a state s
     - actions(s): possible moves for a state, returns the set of legal moves in a state s
@@ -40,12 +40,41 @@ A game can be formally defined as a kind of search problem with the following el
     - terminal-test(s): Is the game over? a test which is true when the game in a state is over or otherwise is false
     - utility(s, p):  
         - A utility function, defines the final numeric value for a game that ends in terminal state s for a player p
+	- tells us for an end state s how much this is worth for a player p
         - In chess, outcome is a win, loss, or draw, with values +1, 0, or 1
         - defines the game result for the player p in a terminal state s
         - evaluation function; p = player
 	- how good is the sate for the specified player
 
+
+**The solution for a player is a policy which maps State to Actions**
 **The initial state, ACTIONS function, and RESULT function define the game tree, where nodes are game states and the edges are moves**
+
+
+Zero-Sum Games:
+	- agents have opposite utilities
+	- pure competition -> one function where one agent maximizes it the other agent minimizes it
+
+General Games:
+	- agent have independent utilities
+
+
+Value:
+	- is the best achievable outcome (utility) from that state
+	- for terminal states the value is known, given in the definition of the game
+	- the value of a state is defined to be the maximum of the value of its children
+
+Minimax Values:
+    - the best outcoume achievable under perfect play against an optimal adversary
+    - needs to incorporate the idea of adversarial reasoning
+    - is still know what's at the bottom/leafs of the tree because the game defines the terminal states
+
+
+Two Player Game (Max-Min) 
+    - Max moves first
+    - turn-taking untill the game is over
+    - zero-sum game: the points go to winner and penalties to loser
+
 
 
 OPTIMAL DECISION IN GAMES
