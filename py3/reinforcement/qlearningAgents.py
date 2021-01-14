@@ -211,12 +211,13 @@ class ApproximateQAgent(PacmanQAgent):
         "*** YOUR CODE HERE ***"
         ## to calc the difference
         features = self.featExtractor.getFeatures(state, action)
-        sample = reward + self.discount * self.getValue(nextState)
+        sample = reward + self.discount * self.computeValueFromQValues(nextState)
         oldQValue = self.getQValue(state, action)
+        difference = sample - oldQValue
 
         ## iteration
         for f in features:
-          self.weights[f] = self.weights[f] + self.alpha*(sample - oldQValue) * features[f] ## updating the weights
+          self.weights[f] = self.weights[f] + self.alpha * (difference) * features[f] ## updating the weights
         #util.raiseNotDefined()
 
     def final(self, state):
