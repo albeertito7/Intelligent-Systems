@@ -67,7 +67,9 @@ Value:
 Minimax Values:
     - the best outcoume achievable under perfect play against an optimal adversary
     - needs to incorporate the idea of adversarial reasoning
-    - is still know what's at the bottom/leafs of the tree because the game defines the terminal states
+    - is still known what's at the bottom/leafs of the tree because the game defines the terminal states
+    - the adversary will try to minimize our utility function
+    - the max player must maximize the adversarial values
 
 
 Two Player Game (Max-Min) 
