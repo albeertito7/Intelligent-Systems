@@ -235,7 +235,61 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         Returns the minimax action using self.depth and self.evaluationFunction
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        ## util.raiseNotDefined()
+        import sys
+
+        def result(gameState, agent, action):
+            return gameState.generateSuccessor(agent, action)
+
+        def utility(gameState):
+            return self.evaluationFunction(gameState)
+
+        def terminalTest(gameState, depth):
+            return depth == 0 or gameState.isWin() or gameState.isLose()
+
+        def actions(gameState, agent):
+          return gameState.getLegalActions(agent)
+
+        def max_value(gameState, agent, depth, alpha, beta):
+          if terminalTest(gameState, depth):
+            return utility(gameState)
+          v = -sys.maxsize
+          for action in actions(gameState, agent):
+            v = max(v, min_value(result(gameState, agent, action), 1, depth, alpha, beta))
+            if v > beta:
+              return v
+            alpha = max(alpha, v)
+          return v
+
+        def min_value(gameState, agent, depth, alpha, beta):
+          if terminalTest(gameState, depth):
+            return utility(gameState)
+          v = sys.maxsize
+          for action in actions(gameState, agent):
+            if(agent == gameState.getNumAgents()-1):
+              v = min(v, max_value(result(gameState, agent, action), 0, depth-1, alpha, beta))
+            else:
+              v = min(v, min_value(result(gameState, agent, action), agent+1, depth, alpha, beta))
+            if v < alpha:
+              return v
+            beta = min(beta, v)
+          return v
+
+        v = -sys.maxsize
+        actionSet = []
+        alpha = -sys.maxsize
+        beta = sys.maxsize
+        for action in actions(gameState, 0):
+          u = min_value(result(gameState, 0, action), 1, self.depth, alpha, beta)
+          if u == v: ## if the value is equal, add to the set of actions
+            actionSet.append(action)
+          elif u > v: ## if its a better value (max), reinitialize the set of good actions
+            v = u
+            actionSet = [action]
+          alpha = max(alpha, v) ## we musn't sent always the minus infinite, we need to pass the actual alpha
+          ## in the root node we r not pruning by beta
+
+        return random.choice(actionSet) 
 
 class ExpectimaxAgent(MultiAgentSearchAgent):
     """
