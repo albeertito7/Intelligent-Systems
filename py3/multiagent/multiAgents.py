@@ -192,7 +192,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
         def max_value(gameState, agent, depth):
           if terminalTest(gameState, depth): ## is a terminal state or need to stop going deeper
             return utility(gameState) ## returns the score value
-          v = -sys.maxint ## represents minus infinite, temporal variable, need to find the max of the minimum value
+          v = -sys.maxsize ## represents minus infinite, temporal variable, need to find the max of the minimum value
           for action in actions(gameState, agent): ## iterate through the set of legal actions
             ## getting the max between thee temporal var and the min_value result function
             ## min_value: gets the min utility value of the gameStates from applying the action
@@ -203,7 +203,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
         def min_value(gameState, agent, depth):
           if terminalTest(gameState, depth):
             return utility(gameState)
-          v = sys.maxint ## represents infinite, temporal variable, need to find the min of the values
+          v = sys.maxsize ## represents infinite, temporal variable, need to find the min of the values
           for action in actions(gameState, agent):
             if(agent == gameState.getNumAgents()-1): ## minus 1 cuz the max player needs to be removed from the agents count
               v = min(v, max_value(result(gameState, agent, action), 0, depth-1)) ## 0 cuz the next player to move is the max one, depth-1 we got a move
@@ -212,7 +212,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
           return v
 
         ## return action!!! ## minimax-decision algorithm applied
-        v = -sys.maxint
+        v = -sys.maxsize
         actionSet = []
         for action in actions(gameState, 0): ## agent 0 (pacman) which is the one who apply the minimax-decision function
           u = min_value(result(gameState, 0, action), 1, self.depth) ## the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
