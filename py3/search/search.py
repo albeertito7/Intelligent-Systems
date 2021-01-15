@@ -87,7 +87,26 @@ def depthFirstSearch(problem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    ## util.raiseNotDefined()
+    startingNode = problem.getStartState()
+
+    stack = util.Stack() ## create the stack ## LIFO (Last-In First-Out)
+    visitedNodes = [] ## create the list of visited nodes
+
+    stack.push((startingNode, [])) ## push the startingNode with the list of actions empty cuz it's the beginning one
+
+    while not stack.isEmpty(): ## if the stack is empty means all the tree nodes were visited, so the search is finished
+        currentNode, actions = stack.pop() ## retrieve the tuple
+
+        if problem.isGoalState(currentNode): ## terminal test
+            return actions ## return the actions
+
+        if currentNode not in visitedNodes: ## if not visited
+            visitedNodes.append(currentNode) ## add current node if it's the first time when visited
+
+            for nextNode, action, cost in problem.getSuccessors(currentNode): ## for each successor add it and the its action path to the stack
+                newAction = actions + [action] ## the newAction path, add the new action the get the succesor to the action path list done till now
+                stack.push((nextNode, newAction))
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
