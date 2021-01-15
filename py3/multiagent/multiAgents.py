@@ -79,8 +79,8 @@ class ReflexAgent(Agent):
         old_food = currentGameState.getFood() ## old food state, is a matrix
         total_score = 0.0 ## our personal score to be returned
 
-        for x in xrange(old_food.width):
-          for y in xrange(old_food.height):
+        for x in range(old_food.width):
+          for y in range(old_food.height):
             if old_food[x][y]: ## if there is food
               d = manhattanDistance((x, y), newPos) ## compute the right angle distance between food coordinates and new pacman position
               if d==0: ## if its next to the pacman
