@@ -74,7 +74,39 @@ class ReflexAgent(Agent):
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
         "*** YOUR CODE HERE ***"
-        return successorGameState.getScore()
+        #return successorGameState.getScore()
+
+        old_food = currentGameState.getFood() ## old food state, is a matrix
+        total_score = 0.0 ## our personal score to be returned
+
+        for x in xrange(old_food.width):
+          for y in xrange(old_food.height):
+            if old_food[x][y]: ## if there is food
+              d = manhattanDistance((x, y), newPos) ## compute the right angle distance between food coordinates and new pacman position
+              if d==0: ## if its next to the pacman
+                  total_score += 100 ## add a good value to the score
+              else:
+                total_score += 1.0/(d*d) ## add a value depending on the distance
+
+        ## need to consider not only the food but also the position of the ghost that must affect the score too 
+        for ghost in newGhostStates:
+          d = manhattanDistance(ghost.getPosition(), newPos)
+          if d<=1:
+            if(ghost.scaredTimer != 0):
+              total_score += 2000
+            else:
+              total_score -= 200
+
+        ## also would be so interesting to consider the capsules/fruits and if it's good or not to eat these ones
+        ## for now we are considering them as the highest valueble elements, not applying any kind of condition
+        for capsule in currentGameState.getCapsules():
+          d = manhattanDistance(capsule, newPos) 
+          if d==0:
+            total_score += 3000
+          else:
+            total_score += 1.0/(d*d)
+
+        return total_score
 
 def scoreEvaluationFunction(currentGameState):
     """
