@@ -111,7 +111,25 @@ def depthFirstSearch(problem):
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    ## util.raiseNotDefined()
+    startingNode = problem.getStartState()
+
+    queue = util.Queue() ## create the queue ## FIFO (First-In First-Out)
+    visitedNodes = []
+    queue.push((startingNode, []))
+
+    while not queue.isEmpty():
+        currentNode, actions = queue.pop()
+
+        if problem.isGoalState(currentNode):
+                return actions
+
+        if currentNode not in visitedNodes:
+            visitedNodes.append(currentNode)
+
+            for nextNode, action, cost in problem.getSuccessors(currentNode):
+                newAction = actions + [action]
+                queue.push((nextNode, newAction))
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
