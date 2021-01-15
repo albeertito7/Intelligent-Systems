@@ -143,7 +143,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
     Your minimax agent (question 2)
     """
 
-    def getAction(self, gameState):
+    def getAction(self, gameState): ## this the minimax-decision function that returns an action using minimax algorithm
         """
         Returns the minimax action from the current gameState using self.depth
         and self.evaluationFunction.
@@ -167,7 +167,63 @@ class MinimaxAgent(MultiAgentSearchAgent):
         Returns whether or not the game state is a losing state
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        ## util.raiseNotDefined()
+
+        ## implementation functions for doing minimax-decision algorithm
+        import sys
+        
+        ## transition model, defines the result (newGameState) of an agent's action in a gameState
+        def result(gameState, agent, action):
+          return gameState.generateSuccessor(agent, action)
+        
+        ## return the set of legal actions of an agent in a specific state
+        def actions(gameState, agent):
+          return gameState.getLegalActions(agent)
+
+        ## defines the final numeric value for a game that ends in terminal state
+        def utility(gameState):
+          return self.evaluationFunction(gameState)
+
+        ## which is true when the game is over, otherwise is false
+        def terminalTest(gameState, depth): ## how much depth is left? how much further pacman can go through the tree? ## self.depth is not this one
+          return depth == 0 or gameState.isWin() or gameState.isLose()
+
+        ## 
+        def max_value(gameState, agent, depth):
+          if terminalTest(gameState, depth): ## is a terminal state or need to stop going deeper
+            return utility(gameState) ## returns the score value
+          v = -sys.maxint ## represents minus infinite, temporal variable, need to find the max of the minimum value
+          for action in actions(gameState, agent): ## iterate through the set of legal actions
+            ## getting the max between thee temporal var and the min_value result function
+            ## min_value: gets the min utility value of the gameStates from applying the action
+            v = max(v, min_value(result(gameState, agent, action), 1, depth)) ## 1 cuz the next agent is the first ghost
+          return v
+
+        ##
+        def min_value(gameState, agent, depth):
+          if terminalTest(gameState, depth):
+            return utility(gameState)
+          v = sys.maxint ## represents infinite, temporal variable, need to find the min of the values
+          for action in actions(gameState, agent):
+            if(agent == gameState.getNumAgents()-1): ## minus 1 cuz the max player needs to be removed from the agents count
+              v = min(v, max_value(result(gameState, agent, action), 0, depth-1)) ## 0 cuz the next player to move is the max one, depth-1 we got a move
+            else:
+              v = min(v, min_value(result(gameState, agent, action), agent+1, depth)) ## the same depth, a move is not completed
+          return v
+
+        ## return action!!! ## minimax-decision algorithm applied
+        v = -sys.maxint
+        actionSet = []
+        for action in actions(gameState, 0): ## agent 0 (pacman) which is the one who apply the minimax-decision function
+          u = min_value(result(gameState, 0, action), 1, self.depth) ## the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
+          if u == v: ## if the value is equal, add to the set of actions
+            actionSet.append(action)
+          elif u > v: ## if its a better value (max), reinitialize the set of good actions
+            v = u
+            actionSet = [action]
+        
+        ## need to return the action that pacman must take
+        return random.choice(actionSet) ## random choice between all minimax actions got
 
 class AlphaBetaAgent(MultiAgentSearchAgent):
     """
