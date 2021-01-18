@@ -86,13 +86,13 @@ Two Player Game (Max-Min)
 Minimax Implementation:
 
     def max-value(state):
-        initialize v = -infinite
+        initialize v = -infinity
         for each sucessor of state:
             v = max(v, min-value(sucessor))
         return v
     
     def min-value(state):
-        initialize v= +infinite
+        initialize v= +infinity
         for each sucessor of state:
             v = min(v, max-value(sucessor))
         return v
