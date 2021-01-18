@@ -83,6 +83,21 @@ Two Player Game (Max-Min)
     - zero-sum game: the points go to winner and penalties to loser
 
 
+Minimax Implementation:
+
+    def max-value(state):
+        initialize v = -infinite
+        for each sucessor of state:
+            v = max(v, min-value(sucessor))
+        return v
+    
+    def min-value(state):
+        initialize v= +infinite
+        for each sucessor of state:
+            v = min(v, max-value(sucessor))
+        return v
+
+
 
 OPTIMAL DECISION IN GAMES
 
