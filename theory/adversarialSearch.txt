@@ -128,6 +128,13 @@ Minimax Efficiency:
         - space: O(rm) -> the max possible space to have in our stack
 
 
+Minimax Properties:
+    - Against an optimal player -> Max must play optimally
+    - But, otherwise? random or bad player
+        - how minimax acts reasoning can lead to suboptimal adversarial behaviour? -> minimax is going to be overly pessimistic
+
+
+
 OPTIMAL DECISION IN GAMES
 
 - In a normal search problem, the optimal solution is a sequence of actions leading to a goal state (terminal state that is a win).
