@@ -62,7 +62,7 @@ General Games:
 Value Concept:
 	- is the best achievable outcome (utility) from that state
 	- for terminal states the value is known, given in the definition of the game
-	- the value of a state is defined to be the maximum of the value of its children
+	- the max value of a state is defined to be the maximum of the value of its children
 
 Minimax Value:
     - the best outcoume achievable under perfect play against an optimal adversary
@@ -86,17 +86,39 @@ Two Player Game (Max-Min)
 Minimax Implementation:
 
     def max-value(state):
+        if terminal state: return state's utility
         initialize v = -infinity
         for each sucessor of state:
             v = max(v, min-value(sucessor))
         return v
     
     def min-value(state):
+        if terminal state: return state's utility
         initialize v= +infinity
         for each sucessor of state:
             v = min(v, max-value(sucessor))
         return v
 
+    
+MultiAgentMinimaxSearch:
+
+    def value(state):
+        if the next agent is MAX: return max-value(state)
+        if the next agetn is MIN: return min-value(state)
+
+    def max-value(state):
+        if terminal state: return state's utility
+        initialize v= -infinity
+        for each successor of state:
+            v = max(v, value(sucessor))
+        return v
+    
+    def min-value(state):
+        if terminal state: return state's utility
+        initialize v= +infinity
+        for each sucessor of state:
+            v = min(v, value(sucessor))
+        return v
 
 
 OPTIMAL DECISION IN GAMES
