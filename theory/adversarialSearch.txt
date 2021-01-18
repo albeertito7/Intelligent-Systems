@@ -121,6 +121,13 @@ MultiAgentMinimaxSearch:
         return v
 
 
+Minimax Efficiency:
+    - problem: the number of states to explore could be exponential, like DFS or BFS
+    - where r is the branching factor and m is the depth level to be reached:
+        - time: O(r^m) -> on each level the time will be more because of the exponential factor 
+        - space: O(rm) -> the max possible space to have in our stack
+
+
 OPTIMAL DECISION IN GAMES
 
 - In a normal search problem, the optimal solution is a sequence of actions leading to a goal state (terminal state that is a win).
