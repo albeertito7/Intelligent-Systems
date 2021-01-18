@@ -59,18 +59,23 @@ General Games:
 	- agent have independent utilities
 
 
-Value:
+Value Concept:
 	- is the best achievable outcome (utility) from that state
 	- for terminal states the value is known, given in the definition of the game
 	- the value of a state is defined to be the maximum of the value of its children
 
-Minimax Values:
+Minimax Value:
     - the best outcoume achievable under perfect play against an optimal adversary
     - needs to incorporate the idea of adversarial reasoning
     - is still known what's at the bottom/leafs of the tree because the game defines the terminal states
     - the adversary will try to minimize our utility function
-    - the max player must maximize the adversarial values
+    - the max player must maximize the adversarial possible values
+    - computed recursively
 
+Minimax Search:
+    - a state-space search tree
+    - turn-taking game
+    - Compute each node's minimax value: the best achievable utility against a rational (optimal) adversary
 
 Two Player Game (Max-Min) 
     - Max moves first
