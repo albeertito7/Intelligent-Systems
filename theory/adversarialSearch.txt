@@ -154,6 +154,12 @@ Evaluation Function:
     - returned value: the result of a weighted linear sum of state features
 
 
+Game Tree Pruning:
+    - prune: to look for branches that do not to be analysed
+    - prune those branches/nodes when is know that are already worst than the candidate
+
+
+
 OPTIMAL DECISION IN GAMES
 
 - In a normal search problem, the optimal solution is a sequence of actions leading to a goal state (terminal state that is a win).
