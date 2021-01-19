@@ -147,10 +147,11 @@ Evaluation Function:
     - idea: score non-terminal states in depth-limited search
     - ideal funciton: returns the actual minimax value of the position
     - in practice: came up with a function which on average is positive/negative when the minimax value is positive/negative
-    - a game state will be better depending on its features
+    - a game state will be better depending on its features -> have two queens in chess i.e.
+    - feature: function which look at the state and return some indicator
+    - weight: importance coeficien
     - Eval(s) = w1*f1(s) + w2*f2(s) + ... + wn*fn(s)
-    - value: the result of a weighted linear sum of state features
-
+    - returned value: the result of a weighted linear sum of state features
 
 
 OPTIMAL DECISION IN GAMES
