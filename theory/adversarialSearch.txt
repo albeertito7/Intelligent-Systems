@@ -159,6 +159,27 @@ Game Tree Pruning:
     - prune those branches/nodes when is know that are already worst than the candidate
 
 
+Alpha-Beta Pruning Implementation:
+    - alpha: MAX's best option on path to root
+    - betha: MIN's best option on path to root
+
+    def max-value(state, alpha, betha):
+        initialize v = -infinity
+        if terminal state: return state's utility
+        for each sucessor of state:
+            v = max(v, value(sucessor, alpha, betha))
+            if v >= betha: return v
+            alpha = max(alpha, v)
+        return v
+
+    def min-value(state, alpha, betha):
+        initialize v = +infinity
+        if terminal state: return state's utility
+        for each sucessor of state:
+            v = min(v, value(sucessor, alpha, betha))
+            if v <= alpha return v
+            betha = min(betha, v)
+        return v
 
 OPTIMAL DECISION IN GAMES
 
