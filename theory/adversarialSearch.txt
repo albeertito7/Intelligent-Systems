@@ -134,6 +134,13 @@ Minimax Properties:
         - how minimax acts reasoning can lead to suboptimal adversarial behaviour? -> minimax is going to be overly pessimistic
 
 
+Resource Limits:
+    - problem: in realistic games, cannot search to leaves! -> too much memory and computation required
+    - solution: Depth-limited search using an evaluation function for non-terminal positions
+    - till now is used the terminal states utility, defined by the game, to calc the mid nodes ones
+    - when adding the depth concept, our depthest states mostly won't be terminal so is needed a way to calc its utility not having the terminal state reference
+    - thus, the evaluation function is born
+
 
 OPTIMAL DECISION IN GAMES
 
