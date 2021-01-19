@@ -139,7 +139,7 @@ Resource Limits:
     - solution: Depth-limited search using an evaluation function for non-terminal positions
     - till now is used the terminal states utilities, defined by the game, to calc the mid state ones
     - when adding the depth concept, our depthest states mostly won't be terminal so is needed a way to calc its utility not having the terminal state reference
-    - thus, the evaluation function is born
+    - thus, the evaluation function is born -> value estimate about what the terminal utility would be under minimax play
 
 
 OPTIMAL DECISION IN GAMES
