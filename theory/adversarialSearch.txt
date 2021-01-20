@@ -181,12 +181,19 @@ Alpha-Beta Pruning Implementation:
             betha = min(betha, v)
         return v
 
+
+- there is a problem on the above implementation:
+    - sometimes children of the root may have the wrong value
+    - when prunning by alpha an betha, should not be prunned when the value is equal to alpha or betha
+
+
 Alpha-Betha Pruning Efficiency:
     - possible to go deeper into the tree -> branching factor is reduced
     - with "perfect ordering":
         - could double solvable depth
         - where r is the branching factor and m is the depth level to be reached:
             - time complexity drops from O(r^m) to O(r^m/2)
+
 
 OPTIMAL DECISION IN GAMES
 
