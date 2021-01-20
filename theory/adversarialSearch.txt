@@ -181,6 +181,13 @@ Alpha-Beta Pruning Implementation:
             betha = min(betha, v)
         return v
 
+Alpha-Betha Pruning Efficiency:
+    - possible to go deeper into the tree -> branching factor is reduced
+    - with "perfect ordering":
+        - could double solvable depth
+        - where r is the branching factor and m is the depth level to be reached:
+            - time complexity drops from O(r^m) to O(r^m/2)
+
 OPTIMAL DECISION IN GAMES
 
 - In a normal search problem, the optimal solution is a sequence of actions leading to a goal state (terminal state that is a win).
