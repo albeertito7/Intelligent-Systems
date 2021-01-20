@@ -195,6 +195,8 @@ Alpha-Betha Pruning Efficiency:
             - time complexity drops from O(r^m) to O(r^m/2)
 
 
+/*** EXTRA NOTES ***/
+
 OPTIMAL DECISION IN GAMES
 
 - In a normal search problem, the optimal solution is a sequence of actions leading to a goal state (terminal state that is a win).
