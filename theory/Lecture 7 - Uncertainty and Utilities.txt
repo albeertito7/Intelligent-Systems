@@ -17,6 +17,9 @@ Uncertainty and Utilities
     - values should now reflext average-case outcomes, not worst-case (optimal) (minimax) outcomes
     - replace all the min values by averages
 
+- now matter how well is played, who knows what is gonna happen when the dice roll
+- compute whatever actions are gonna give the best outcome on average
+
 Expectimax Search:
     - idea: compute the average score under optimal play
     - calculate the nodes' expected utilities
