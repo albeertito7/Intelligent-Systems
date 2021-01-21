@@ -129,9 +129,12 @@ Minimax Efficiency:
 
 
 Minimax Properties:
-    - Against an optimal player -> Max must play optimally
+    - Against an optimal player
+        - Max must play optimally
+        - is possible to predict the next adversarial move
     - But, otherwise? random or bad player
         - how minimax acts reasoning can lead to suboptimal adversarial behaviour? -> minimax is going to be overly pessimistic
+            - does not take into a count the chance about a bad or benefit adversarial move for us
 
 
 Resource Limits:
