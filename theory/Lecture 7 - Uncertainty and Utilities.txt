@@ -23,3 +23,20 @@ Expectimax Search:
     - now matter how well is played, who knows what is gonna happen when the dice roll
     - compute whatever actions are gonna give the best outcome on average
     - calculate the nodes' expected utilities
+
+
+Expectimax Implementation:
+
+    def max-value(state):
+        if terminal state: return state's utility 
+        initialize v = -infinity
+        for each sucessor of state:
+            v = max(v, exp-value(sucessor))
+        return v
+
+    def exp-value(state):
+        if terminal state: return state's utility
+        initialize v = 0
+        for each sucessor of state:
+            p = probability(sucessor)
+            v += p * 
