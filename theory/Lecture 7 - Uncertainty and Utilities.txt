@@ -1,1 +1,22 @@
 Uncertainty and Utilities
+
+- How you should plan when the actions' outcome is not entirely under your control?
+- Idea: uncertain outcomes controlled by chance, and not by an adversary!
+
+
+- if u play against a perfect adversary (optimal) -> it is possible to predict its next move
+- but if there is a chance/probability -> the prediction needs to depend on this
+
+
+- Why wouldn't we know what the result of an action will be?
+    - explicit randomness: rolling dice
+    - unpredictable adversaries: the ghosts respond randomly
+    - actions can fail: when moving a robot, wheels might slip
+
+- any action taken will have some uncertainty
+    - values should now reflext average-case outcomes, not worst-case (optimal) (minimax) outcomes
+    - replace all the min values by averages
+
+Expectimax Search:
+    - idea: compute the average score under optimal play
+    - calculate the nodes' expected utilities
