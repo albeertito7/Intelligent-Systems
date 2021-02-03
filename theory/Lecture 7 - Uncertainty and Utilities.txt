@@ -69,3 +69,7 @@ In expectimax search,
     - model could be a simple uniform distribution (roll a die)
     - model could be sophisticated and require a great deal of computation
     - the model might say that adversarial actions are likely!
+
+
+When we decide to use Minimax or Expectimax?
+    - depends on the modelling assumptions: How we think the world works? -> What computation we should do?
