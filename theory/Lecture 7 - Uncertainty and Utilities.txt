@@ -3,14 +3,13 @@ Uncertainty and Utilities
 - How you should plan when the actions' outcome is not entirely under your control?
 - Idea: uncertain outcomes controlled by chance, and not by an adversary!
 
-
-- if u play against a perfect adversary (optimal) -> it is possible to predict its next move
+- if you play against a perfect adversary (optimal) -> it is possible to predict its next move
 - but if there is a chance/probability -> the prediction needs to depend on this
 
 
 - Why wouldn't we know what the result of an action will be?
     - explicit randomness: rolling dice
-    - unpredictable adversaries: the ghosts respond randomly
+    - unpredictable adversaries: the ghosts respond randomly or not optimal
     - actions can fail: when moving a robot, wheels might slip
 
 - any action taken will have some uncertainty
@@ -23,7 +22,6 @@ Expectimax Search:
     - now matter how well is played, who knows what is gonna happen when the dice roll
     - compute whatever actions are gonna give the best outcome on average
     - calculate the nodes' expected utilities
-
 
 Expectimax Implementation:
 
@@ -39,4 +37,35 @@ Expectimax Implementation:
         initialize v = 0
         for each sucessor of state:
             p = probability(sucessor)
-            v += p * 
+
+
+Expectimax Pruning?
+    - hard to prune because all the values count
+
+
+**For average-case expectimax reasoning, we need magnitudes to be meaningful**
+
+
+Probabilities
+
+key concepts:
+    - random variable: event whose outcome is unknown
+    - probability distribution: an assignments of weights to outcomes
+
+Some basic laws of probability:
+    - probabilities are always non-negative
+    - probabilities over all possible outcomes sum to one
+
+** Probabilities may change as we get more evidence **
+** We'll talk about methods for reasoning and updating probabilitites **
+
+
+Expected Value: and average of random variables, weighted by the probability distribution
+Now we'll be able to calculate our expectations of the children values -> expectimax values
+
+
+In expectimax search,
+    - we have a probabilistic model: how the adversary (or environment) will behave in any state
+    - model could be a simple uniform distribution (roll a die)
+    - model could be sophisticated and require a great deal of computation
+    - the model might say that adversarial actions are likely!
