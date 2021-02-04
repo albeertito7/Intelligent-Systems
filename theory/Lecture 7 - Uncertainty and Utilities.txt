@@ -74,3 +74,12 @@ In expectimax search,
 When we decide to use Minimax or Expectimax?
     - depends on the modelling assumptions: How we think the world works? -> What computation should we do?
     - key modelling choice is: Are the outcomes out of our control, adversarial or chance?
+
+The Dangers of Optiimism and Pessimism
+
+- Dangerous Optimism: Assuming chance when the world is adversarial
+    - assuming things are only happening according to chance
+    - but the adversaries are out to get you
+    - you are gonna do dangerous things because this assumption
+
+- Dangerous Pessimism: Assuming the worst case even when it's not likely
