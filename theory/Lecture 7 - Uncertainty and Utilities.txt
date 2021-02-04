@@ -135,4 +135,24 @@ Utilities: are functions from outcomes (states of the world) to real numbers tha
     - What do utilities come from?
         - in a zero-sum game, may be simple (+1/-1)
         - utilities summarize the agent's goals
-        - Theorem: any "rational" preferences can be summarized as a utility function/evaluation function 
+        - Theorem: any "rational" preferences can be summarized as a utility function/evaluation function
+
+Preferences
+    - an agent must have preferences among uncertain choices
+    - so the utility function must take into account these preferences
+
+Rational Preferences
+    - we want some constraints on preferences before we call them rational
+    - such as the Axiom of Transivity: (A > B) and (B > C) => (A > C)
+    - because intransitive preferences can be induced to defects in the behavior
+
+Notation:
+    - preference: A > B
+    - indiference: A ~ B
+
+The Axioms of Rationality
+    - Orderability: (A > B) or (B > A) or (A ~ B)
+    - Transitivity: (A > B) and (B > C) => (A > C)
+    - Continuity: (A > B > C) => Ǝp where [p, A; 1-p, C] ~ B
+    - Substitutability:(A ~ B) => [p, a; 1-p, C] ~ [p, B; 1-p, C]
+    - Monotonicity: (A > B) => ( p >= p <=> [p, A; 1-p, B] >= [q, A; 1-q, B])
