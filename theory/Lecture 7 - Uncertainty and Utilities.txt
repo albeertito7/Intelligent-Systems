@@ -97,3 +97,9 @@ Exemples of Modelling:
 ---------------------------------------------------
 
 **If pacman is models overly optimistic, might actually die**
+
+
+Expectiminimax?
+    - apart from min and max are acting optimally or not, could be another agent which affects the min/max moves
+    - ENVIRONMENT is an extra "random agent" player that moves after each min/max agent
+        - adding a true randomness to each min/max moves
