@@ -109,6 +109,30 @@ Expectiminimax?
 Multi-Agent Utilities
     - What if the game is not zero-sum, or has multiple players?
         - node values are also UTILITY TUPLES, one value for each agents
-        - each player maximizes its own component
+        - each player is a max, maximizing its own component/utility
         - Terminals have utility tuples
+        - is needed to track how much the node state is worth to each of possible players -> giving rise the TUPLES
         - can give rise to cooperation and competition dynamically
+
+
+Utilities
+    - What are these numbers?
+    - Where do they come from?
+    - How do we know they even exist?
+    - How do we know that averaging even makes sense?
+    - What if our behavior (preferences) can't be described by utilities?
+    - if we have numbers that represents our PREFERENCES, Why are we averaging them?
+
+Why should we average utilities? Why not using always minimax choosing our best sure move?
+    - because if we play in a world not-controlled fully by us, using minimax we will be computing super bad and unlikely events
+    - if we want to be robust to the fact that bad things can happen but usually don't -> we need AVERAGE CASE REASONING
+
+Principle of Maximum Expected Utility
+    - a rational agent should chose the action that maximizes its expected utility, given its knowledge
+
+
+Utilities: are functions from outcomes (states of the world) to real numbers that describe an agent's preferences
+    - What do utilities come from?
+        - in a zero-sum game, may be simple (+1/-1)
+        - utilities summarize the agent's goals
+        - Theorem: any "rational" preferences can be summarized as a utility function/evaluation function 
