@@ -72,4 +72,5 @@ In expectimax search,
 
 
 When we decide to use Minimax or Expectimax?
-    - depends on the modelling assumptions: How we think the world works? -> What computation we should do?
+    - depends on the modelling assumptions: How we think the world works? -> What computation should we do?
+    - key modelling choice is: Are the outcomes out of our control, adversarial or chance?
