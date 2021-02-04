@@ -103,3 +103,12 @@ Expectiminimax?
     - apart from min and max are acting optimally or not, could be another agent which affects the min/max moves
     - ENVIRONMENT is an extra "random agent" player that moves after each min/max agent
         - adding a true randomness to each min/max moves
+    - there is not only you and the oponnent moving, but also some element of chance
+
+
+Multi-Agent Utilities
+    - What if the game is not zero-sum, or has multiple players?
+        - node values are also UTILITY TUPLES, one value for each agents
+        - each player maximizes its own component
+        - Terminals have utility tuples
+        - can give rise to cooperation and competition dynamically
