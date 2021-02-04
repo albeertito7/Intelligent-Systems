@@ -82,6 +82,7 @@ The Dangers of Optiimism and Pessimism
     - assuming things are only happening according to chance
     - but the adversaries are out to get you
     - you are gonna do dangerous things because this assumption
+    - sometimes works out and others don't
 
 - Dangerous Pessimism: Assuming the worst case even when it's not likely
 
@@ -94,3 +95,5 @@ Exemples of Modelling:
     - if RandomGhost and Dangerous Pessimism -> Minimax -> assuming the adversarial acts optimally
     - if AdversarialGhost and Dangerous Optimism -> Expectimax -> assuming chance when actually is optimal
 ---------------------------------------------------
+
+**If pacman is models overly optimistic, might actually die**
