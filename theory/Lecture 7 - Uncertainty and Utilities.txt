@@ -127,7 +127,7 @@ Why should we average utilities? Why not using always minimax choosing our best 
     - because if we play in a world not-controlled fully by us, using minimax we will be computing super bad and unlikely events
     - if we want to be robust to the fact that bad things can happen but usually don't -> we need AVERAGE CASE REASONING
 
-Principle of Maximum Expected Utility
+Principle of Maximum Expected Utility (MEU)
     - a rational agent should chose the action that maximizes its expected utility, given its knowledge
 
 
@@ -138,7 +138,7 @@ Utilities: are functions from outcomes (states of the world) to real numbers tha
         - Theorem: any "rational" preferences can be summarized as a utility function/evaluation function
 
 Preferences
-    - an agent must have preferences among uncertain choices
+    - an agent must have preferences among uncertain choices -> loteries
     - so the utility function must take into account these preferences
 
 Rational Preferences
@@ -156,3 +156,7 @@ The Axioms of Rationality
     - Continuity: (A > B > C) => Ǝp where [p, A; 1-p, C] ~ B
     - Substitutability:(A ~ B) => [p, a; 1-p, C] ~ [p, B; 1-p, C]
     - Monotonicity: (A > B) => ( p >= p <=> [p, A; 1-p, B] >= [q, A; 1-q, B])
+
+Theorem: 
+    - Rational Preferences imply behavior describable as Maximization of Expected Utility
+    - All of your preferences can be described with the utility function
