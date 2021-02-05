@@ -85,3 +85,10 @@ Policies and Living Penality
     - depending on the living penalty the agent's policies must be more CONSERVATIVE or not
     - if the penalty is little, the agent may remain in the grid for a long time
     - but if the penalty is higher enough, would be interesting to take some risk or even die quickly to not lose more points
+
+
+MDP Search Trees
+    - s is a state
+    - (s, a) is a q-state
+    - q-state: commitment of taking an action a in a state s
+    - from the q-state it is applied the transitions model T(s,a,s') = P(s'|s,a)
