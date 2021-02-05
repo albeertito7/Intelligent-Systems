@@ -30,7 +30,7 @@ Non-Deterministic/Stochastic Grid World
         - 80% North
         - 10% West
         - 10% East
-    - action affected by the ENVIRONMENT
+    - action affected by the ENVIRONMENT or other factors
 
 **When planning we must take into account all the possible outcomes, and if they are worth it**
 
@@ -45,4 +45,5 @@ A MDP is defined by:
     - a start state s
     - maybe a terminal state
 
-**MDP's are non-deterministic search problems**
+MDP's are non-deterministic search problems
+    - one way to solve them is with Expectimax Search
