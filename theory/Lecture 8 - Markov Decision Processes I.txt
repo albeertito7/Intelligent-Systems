@@ -68,8 +68,14 @@ Policies
 
 - for MDPs, we want an optimal policy π*: S -> A
     - a policy π gives an action for each state
+    - a mapping from States to Actions
     - an optimal policy is one that maximizes expected utility if followed
     - an explicit policy defines a reflex agent
-    
+
 - expectimax didn't compute entire policies
     - it computed the action for a single state only
+    - for a given state it did a forward thinking computation that produce one entry of the policy
+        - and wherever you landed, expectimax is ran again
+    - expectimax is a way of solving this problems, but it doesn't comput and explicit policy
+        - bad: you might have to redo a lot of work if you keep ending up in the same states
+        - good: because if you have so many state you couldn't write down an explicit policy anyway
