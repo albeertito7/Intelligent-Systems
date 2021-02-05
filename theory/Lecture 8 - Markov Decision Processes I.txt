@@ -33,3 +33,16 @@ Non-Deterministic/Stochastic Grid World
     - action affected by the ENVIRONMENT
 
 **When planning we must take into account all the possible outcomes, and if they are worth it**
+
+
+A MDP is defined by:
+    - a set of states s ∈ S
+    - a set of actions a ∈ A
+    - a transition function T(s, a, s')
+        - also called the model or the dynamics
+    - a reward function R(s, a, s')
+        - sometimes just R(s), or R(s')
+    - a start state s
+    - maybe a terminal state
+
+**MDP's are non-deterministic search problems**
