@@ -60,3 +60,16 @@ What is Markov about MDPs?
     - just like search, where the sucessor funciton could only depend on the current state (not the history)
 
 **For MDP problem, make sure to define the transition function and your state such a wat that the transition probabilities depend only on the current state and an action**
+
+
+Policies
+
+- in deterministic single-agent search problems -> we wanted an optimal plan, or sequence of actions, form start to a goal
+
+- for MDPs, we want an optimal policy π*: S -> A
+    - a policy π gives an action for each state
+    - an optimal policy is one that maximizes expected utility if followed
+    - an explicit policy defines a reflex agent
+    
+- expectimax didn't compute entire policies
+    - it computed the action for a single state only
