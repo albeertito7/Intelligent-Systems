@@ -1,5 +1,5 @@
 Markov Decision Processes
-    - way to formalize the idea of non-deterministic search
+    - a way to formalize the idea of non-deterministic search
 
 Non-Deterministic Search
     - when action outcomes are uncertain
@@ -15,11 +15,11 @@ Grid World
         - small "living" reward each step (can be negative)
         - big rewards come at the end (good or bad)
     - two kind of rewards
-        1. terminal utilities
+        1. terminal utilities = big rewards
         2. each step
             - positive: walking is happier
-            - negative: will cost pain every step and you want things to end quickly
-    - Agent's Goal:
+            - negative: will cost pain at every step and things must end quickly
+    - Goal:
         - Maximize the sum of rewards
 
 Deterministic Grid World
