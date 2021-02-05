@@ -1,0 +1,6 @@
+Markov Decision Processes
+    - way to formalize the idea of non-deterministic search
+
+Non-Deterministic Search
+    - when action outcomes are uncertain
+    - the outcome isn't entirely under our control
