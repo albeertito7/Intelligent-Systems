@@ -4,3 +4,20 @@ Markov Decision Processes
 Non-Deterministic Search
     - when action outcomes are uncertain
     - the outcome isn't entirely under our control
+
+Grid World
+    - Maze-like problem
+        - the agent lives in a grid
+        - the walls block the agent's path
+    - Noisy movement
+        - actions do not always go as planned
+    - the agent receives rewards each time step
+        - small "living" reward each step (can be negative)
+        - big rewards come at the end (good or bad)
+    - two kind of rewards
+        1. terminal utilities
+        2. each step
+            - positive: walking is happier
+            - negative: will cost pain every step and you want things to end quickly
+    - Agent's Goal:
+        - Maximize the sum of rewards
