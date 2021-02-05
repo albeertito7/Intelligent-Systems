@@ -95,3 +95,7 @@ MDP Search Trees
     - from a q-state there is a probability distribution of what might happen
     - **the probabilities are given by the transition function**
 
+Discounting
+    - it is reasonable to maximize the sum of rewards
+    - it is also reasonable to prefer rewards now to rewards later
+    - One Solution: values of reward decay exponentially
