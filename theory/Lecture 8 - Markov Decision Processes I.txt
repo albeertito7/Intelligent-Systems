@@ -92,3 +92,6 @@ MDP Search Trees
     - (s, a) is a q-state
     - q-state: commitment of taking an action a in a state s
     - from the q-state it is applied the transitions model T(s,a,s') = P(s'|s,a)
+    - from a q-state there is a probability distribution of what might happen
+    - **the probabilities are given by the transition function**
+
