@@ -79,3 +79,9 @@ Policies
     - expectimax is a way of solving this problems, but it doesn't comput and explicit policy
         - bad: you might have to redo a lot of work if you keep ending up in the same states
         - good: because if you have so many state you couldn't write down an explicit policy anyway
+
+
+Policies and Living Penality
+    - depending on the living penalty the agent's policies must be more CONSERVATIVE or not
+    - if the penalty is little, the agent may remain in the grid for a long time
+    - but if the penalty is higher enough, would be interesting to take some risk or even die quickly to not lose more points
