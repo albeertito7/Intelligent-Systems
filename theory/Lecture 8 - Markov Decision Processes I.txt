@@ -21,3 +21,15 @@ Grid World
             - negative: will cost pain every step and you want things to end quickly
     - Agent's Goal:
         - Maximize the sum of rewards
+
+Deterministic Grid World
+    - action North -> outcome = North
+
+Non-Deterministic/Stochastic Grid World
+    - action North -> outcome?
+        - 80% North
+        - 10% West
+        - 10% East
+    - action affected by the ENVIRONMENT
+
+**When planning we must take into account all the possible outcomes, and if they are worth it**
