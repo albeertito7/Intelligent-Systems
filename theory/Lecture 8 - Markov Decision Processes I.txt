@@ -38,12 +38,17 @@ Non-Deterministic/Stochastic Grid World
 A MDP is defined by:
     - a set of states s ∈ S
     - a set of actions a ∈ A
-    - a transition function T(s, a, s')
-        - also called the model or the dynamics
+    - a transition function T(s, a, s') when s' is a possible result
+        - this functions tells how likely s' is
+        - conditional probability -> P(s'|s,a)
+        - also called the model or the dynamics -> representes how the world evolve and response your actions
     - a reward function R(s, a, s')
+        - R(s'|s,a)
         - sometimes just R(s), or R(s')
     - a start state s
     - maybe a terminal state
+        - but MDP's may often go forever
 
 MDP's are non-deterministic search problems
     - one way to solve them is with Expectimax Search
+    - but there's a better way
