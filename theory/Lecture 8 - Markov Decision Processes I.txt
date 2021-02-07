@@ -126,14 +126,15 @@ Infinite Utilities?!
     - Do we get infinite rewards?
     - Solutions:
         - Finite horizon: (similar to depth-limited search)
-            - as the game ends we don't have athe problem of comparing infinites
+            - as the game ends we don't have the problem of comparing infinites
             - terminate episodes after a fixed T steps
-            - gives place to nonstationary policies (π depends on time left), because that what you actually do may depend  on the amount time left
+            - gives place to nonstationary policies (π depends on time left), because that what you actually do may depend on the amount time left
         - Discounting: use 0 < λ < 1
             - even if there's an infinite sequence of positive rewards then there's this exponentially decaying thing that's going to make sure there's some converges
             - U([r0, ... r∞]) = Σ from t=0 to ∞ of ((λ^t) * rt) <= Rmax/(1 - λ) 
             - smaller λ means smaller "horizon"
-
-Idea of Horizon of the agent
-    - when things are steeply discounted we care more about achieving rewards right now
-    - When things are not steeply discounted we don't care so much about how soon rewards are and we try more for big rewards even if they're later
+            - Idea of Horizon of the agent
+                - When things are steeply discounted we care more about achieving rewards right now
+                - When things are not steeply discounted we don't care so much about how soon rewards are and we try more for big rewards even if they're later
+        - Absorbing state:
+            - guarantee that for every policy, a terminal state will eventually be reached
