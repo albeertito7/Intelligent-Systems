@@ -118,3 +118,13 @@ Stationary Preferences
 
 
 **Preferences might not be stationary if certain things change at certain times**
+
+
+Infinite Utilities?!
+    - Problem: What if the game lasts forever?
+        - that will be not possible to decide between faster or slow because at infinite time we will get the same results
+    - Do we get infinite rewards?
+    - Solutions:
+        - Finite horizon: (similar to depth-limited search)
+            - terminate episodes after a fixed T steps
+            - gives nonstationary policies (π depends on time left)
