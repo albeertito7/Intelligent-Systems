@@ -161,7 +161,9 @@ Solving MDPs
 
 Optimal Quantities
      - the value (utility) of a state s:
-        - V*(s) = expected utility starting in s and action optimally
+        - V*(s) = expected utility starting in s and acting optimally
+        - what would happen from that state if you ran expecimax
+        - the idea is if you act optimally from s sometimes you'll get bigger rewards and sometimes smaller rewards, because the outcomes are not actually under our control, but on average V* is the best we can do
     - the value (utility) of a q-state(s,a):
         - Q*(s,a) = expected utility starting out having taken action a from state s and (thereafter) action optimally
     - the optimal policy:
