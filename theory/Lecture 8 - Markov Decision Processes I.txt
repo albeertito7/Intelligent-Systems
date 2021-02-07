@@ -99,3 +99,10 @@ Discounting
     - it is reasonable to maximize the sum of rewards
     - it is also reasonable to prefer rewards now to rewards later
     - One Solution: values of reward decay exponentially
+
+How to discount?
+    - each time we descend a level, we multiply in the discount once
+
+Wy discount?
+    - sooner rewards probably do have higher utility than later rewards
+    - also helps our algorithms coverage
