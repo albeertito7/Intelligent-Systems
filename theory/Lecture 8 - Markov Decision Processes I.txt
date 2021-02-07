@@ -187,3 +187,22 @@ Values of States
             - V*(s) = max of Q*(s,a) over all actions a available from s (a max over the chance nodes)
             - Q*(s,a) = Σ of all s' (T(s,a,s')[R(s,a,s') + λV*(s')])
             - the code is maximizing in one function and taking weighted average in another function
+
+
+Why expectimax is doing way too mych work?
+    - states are repeated
+        - Idea: only compute needed quantities once
+    - search tree may be infinite
+        - Idea: do a depht-limited computation
+        - Note: deep parts of the tree eventually don't matter if λ < 1
+
+Time-Limited Values
+    - key idea
+    - define Vk(s) to be the optimal value of s if the game ends in k more time steps
+    - where k step is a reward
+
+** As the game is ending after k steps, we don't need an evaluation function because we don't have to talk about what happens after the game ends -> nothing happens, no rewards **
+
+
+Value Iteration
+    - building your from the bottom up all the way up to the top where you will receive the computation that expectimax would have done but with a whole less work assuming we have a small number of states 
