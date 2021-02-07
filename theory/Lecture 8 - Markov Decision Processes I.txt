@@ -106,3 +106,15 @@ How to discount?
 Wy discount?
     - sooner rewards probably do have higher utility than later rewards
     - also helps our algorithms coverage
+
+
+Stationary Preferences
+    - preferences are stationary if whenever i prefer one sequence to another, if i stick the same reward in front of both, my preferences should be unchanged
+    - if i like a better than b now, i should like it better shift it into the future as well
+    - [a1, a2, ...] > [b1, b2, ...] <=> [r, a1, a2, ...] > [r, b1, b2, ...]
+    - Then: there are only two ways to degine utilities:
+        - Additive utility: U([r0, r1, r2, ...]) = r0 + r1 + r2 + ...
+        - Discounted utility: U([r0, r1, r2, ...]) = r0 + λr1 + λ^2r2 + ...
+
+
+**Preferences might not be stationary if certain things change at certain times**
