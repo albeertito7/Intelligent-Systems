@@ -138,3 +138,5 @@ Infinite Utilities?!
                 - When things are not steeply discounted we don't care so much about how soon rewards are and we try more for big rewards even if they're later
         - Absorbing state:
             - guarantee that for every policy, a terminal state will eventually be reached
+            - as time goes on the probability of achieving a terminal state will be increasing to end as 1, meaning other achieving other states will be less likely as time goes
+            - for any sequence of actions done, will be hit a terminal state of probability 1
