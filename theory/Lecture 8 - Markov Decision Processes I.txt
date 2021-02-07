@@ -185,4 +185,5 @@ Values of States
     - Recursive definition of value:
         - from a state we would like to know the V*(s) optimal value from this state, thats expectimax from the root of the tree
             - V*(s) = max of Q*(s,a) over all actions a available from s (a max over the chance nodes)
-            - Q*(s,a) = Σ of all s' (T(s,a,s')[R(s,a,s') + V*(s')])
+            - Q*(s,a) = Σ of all s' (T(s,a,s')[R(s,a,s') + λV*(s')])
+            - the code is maximizing in one function and taking weighted average in another function
