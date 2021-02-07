@@ -140,3 +140,6 @@ Infinite Utilities?!
             - guarantee that for every policy, a terminal state will eventually be reached
             - as time goes on the probability of achieving a terminal state will be increasing to end as 1, meaning other achieving other states will be less likely as time goes
             - for any sequence of actions done, will be hit a terminal state of probability 1
+            - is guaranteed not to have infinite cycles of non terminal states
+
+**In general we'll gonna have discounts to fix this infinty problem**
