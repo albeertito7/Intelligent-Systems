@@ -147,11 +147,24 @@ Infinite Utilities?!
 
 Recap: Defining MDPs
     - Markov decision processes:
-        - set of states S
-        - start state S0
-        - set of actions A
+        - set of states s
+        - start state s0
+        - set of actions a
         - Transitions P(s'|s,a) (or T(s,a,s'))
         - Rewards R(s'|s,a) (or R(s,a,s')) (and discount λ)
     - MDP quantities so far:
-        - Policy = Choice of action for each step
-        - Utility = sum of (discounted) rewards
+        - Policy = Choice of action for each step (mapping from states to actions)
+        - Utility = sum of (discounted) rewards (a sequence of rewards)
+
+
+Solving MDPs
+
+Optimal Quantities
+     - the value (utility) of a state s:
+        - V*(s) = expected utility starting in s and action optimally
+    - the value (utility) of a q-state(s,a):
+        - Q*(s,a) = expected utility starting out having taken action a from state s and (thereafter) action optimally
+    - the optimal policy:
+        π*(s) = optimal action from state s
+
+** s is a state, (s,a) is a q-state, (s,a,s') is a transition **
