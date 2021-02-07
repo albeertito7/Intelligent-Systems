@@ -170,3 +170,19 @@ Optimal Quantities
         π*(s) = optimal action from state s
 
 ** s is a state, (s,a) is a q-state, (s,a,s') is a transition **
+
+
+** We want to take an MDP and compute these expectimax values for a state **
+** Actually the algorithms will compute the values for all of the sates **
+** We are computing the expected utility under optimal actions **
+ 
+
+Values of States
+    - Fundamental operation: compute the (expectimax) value of a state
+        - Expected utility under optimal action
+        - Average sum of (discounted) rewards
+        - this is just what expectimax computed
+    - Recursive definition of value:
+        - from a state we would like to know the V*(s) optimal value from this state, thats expectimax from the root of the tree
+            - V*(s) = max of Q*(s,a) over all actions a available from s (a max over the chance nodes)
+            - Q*(s,a) = Σ of all s' (T(s,a,s')[R(s,a,s') + V*(s')])
