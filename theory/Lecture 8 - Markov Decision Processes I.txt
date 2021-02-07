@@ -205,4 +205,20 @@ Time-Limited Values
 
 
 Value Iteration
-    - building your from the bottom up all the way up to the top where you will receive the computation that expectimax would have done but with a whole less work assuming we have a small number of states 
+    - building your computation from the bottom all the way up to the top where you will receive the computation that expectimax would have done but with a whole less work assuming we have a small number of states
+    - start with V0(s) = 0: no time steps left means an expected reward sum of zero
+    - repeat until convergence
+    - complexity of each iteration: O((S^2)A)
+
+
+Convergence*
+    - How do we know the Vk vectors are going to converge?
+    - Case 1: if the tree has maximum depth M, then Vm holds the actual untruncated values
+    - Case 2: if the discount is less than 1:
+        - sketch: for any state Vk and Vk+1 can be viewed as depth k+1 expectimax results in nearly identical search trees
+        - the difference is that on the bottom layer Vk+1 has actual rewards while Vk has zeros
+        - that last layer is at best all Rmax
+        - it's at worst Rmin
+        - but everything is discounted by gamma that far out
+        - so Vk and Vk+1 are at most gamma max|R| different
+        - so as k increases, the values converge
