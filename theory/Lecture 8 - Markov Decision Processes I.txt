@@ -143,3 +143,15 @@ Infinite Utilities?!
             - is guaranteed not to have infinite cycles of non terminal states
 
 **In general we'll gonna have discounts to fix this infinty problem**
+
+
+Recap: Defining MDPs
+    - Markov decision processes:
+        - set of states S
+        - start state S0
+        - set of actions A
+        - Transitions P(s'|s,a) (or T(s,a,s'))
+        - Rewards R(s'|s,a) (or R(s,a,s')) (and discount λ)
+    - MDP quantities so far:
+        - Policy = Choice of action for each step
+        - Utility = sum of (discounted) rewards
