@@ -54,3 +54,9 @@ Policy Methods
         - but if i have a fixed policy i don't have the choice between what action to take, so there's no max over a
         - if we fixed some policy π(s), then the tree would be simplier - only one action per state
             - ... though the tree's value would depend on which policy we fixed
+        - so the algorithm to compute will be simplier and faster as well
+    
+    - Utilities for a Fixed Policy
+        - basic operation: compute the utility of a state s under a fixed (generally non-optimal) policy
+        - define the utility of a state s, under a fixed policy π:
+            Vπ(s) = expected total discounted rewards starting in s and following and following π
