@@ -92,3 +92,4 @@ Policy Extraction
 Computing Actions from Q-Values
     - the q-values make super easy to decide between actions
     - π*(s) = Argmax Q*(s,a) over all actions a
+    - Important lesson: actions are easier to select from q-values than values!
