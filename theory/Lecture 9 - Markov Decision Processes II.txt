@@ -20,3 +20,6 @@ Optimal Quantities:
         - Q*(s,a) = expected utility starting out having taken an action a from state s and (thereafter) acting optimally
     - the optimal policy:
         π*(s) = optimal action from each state s
+
+** Rewards are for one time step, are instanteneous **
+** Values are from one point to the end of the game or forever, are accumulative **
