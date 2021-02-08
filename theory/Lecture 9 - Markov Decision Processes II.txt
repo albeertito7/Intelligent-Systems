@@ -66,3 +66,13 @@ Policy Methods
 Why do we evaluate policies?
     - sometimes we will have a policy and wanna know how good it is, just when running value iteration
     - we will see algorithms about starting with a π0 policy, evaluate that one, and look how to improve it
+
+
+Policy Evaluation
+    - How do we calculate the V's for a fixed policy π?
+    - Idea 1: turn recursive Bellman equations into updates -> like value iteration
+        - Vπ0(s) = 0
+        - Vπk+1(s) = Σ of all s' (T(s,π(s),s')[R(s,π(s),s') + λVπk(s')])
+        - complexity O(S^2) per iteration
+    - Idea 2: without the maxes, the Bellman equations are just a linear system
+        - just using any solver of linear equations -> Matlab?
