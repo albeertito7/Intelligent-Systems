@@ -86,3 +86,4 @@ Policy Extraction
     - we need to do a mini-expectimax (one step)
         - π*(s) = Argmax Σ of all s' (T(s,a,s')[R(s,a,s') + λV*(s')]) over all actions a where Argmax is the action that yields the maximum
     - much work, because is needed to reconsider all the actions and all the transitions probabilities
+    - requires a one step expectimax for every state to reconstruct
