@@ -61,3 +61,8 @@ Policy Methods
         - define the utility of a state s, under a fixed policy π:
             Vπ(s) = expected total discounted rewards starting in s and following and following π
         - Vπ(s) = Σ of all s' (T(s,π(s),s')[R(s,π(s),s') + λVπ(s')]) assuming acting not optimally but as π says in the future => Vπ(S')
+
+
+Why do we evaluate policies?
+    - sometimes we will have a policy and wanna know how good it is, just when running value iteration
+    - we will see algorithms about starting with a π0 policy, evaluate that one, and look how to improve it
