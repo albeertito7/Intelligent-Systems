@@ -95,11 +95,13 @@ Computing Actions from Q-Values
     - Important lesson: actions are easier to select from q-values than values!
 
 
-Policy Iteration
-    - combines the idea of evaluating one policy (extract Vπ(s)) with the idea of improving that policy from those values
-
 Problems with Value Iteration
     - Why value iteration is not always the best solution?
     - value iteration repeats/mimics the Bellman updates
     - Problem 1: slow -> O((S^2)A) per iteration
     - Problem 2: The "max" at each state rarely changes -> waste of time and resources; at higher some iterations is needed a big reward sum to change the action established
+    - Problem 3: The policy often converges long before the values
+    - What can we do? Policy Iteration?
+
+Policy Iteration
+    - combines the idea of evaluating one policy (extract Vπ(s)) with the idea of improving that policy from those values
