@@ -68,11 +68,14 @@ class ValueIterationAgent(ValueEstimationAgent):
             ## need to explore all the states
             for state in self.mdp.getStates(): ##
                 ##compute all q-values for each possible action for the state
-                QValueForAction = util.Counter() ## keys are actions, values are q-values
+                """QValueForAction = util.Counter() ## keys are actions, values are q-values
                 for action in self.mdp.getPossibleActions(state):
                     ## update the hash of q-values
                     QValueForAction[action] = self.computeQValueFromValues(state, action)
-                values[state] = QValueForAction[QValueForAction.argMax()]
+                values[state] = QValueForAction[QValueForAction.argMax()]"""
+                action = self.getAction(state)
+                if action is not None:
+                    values[state] = self.getQValue(state, action)
             self.values = values ## at the end, update values to go to the next step
 
     def getValue(self, state):
@@ -91,10 +94,10 @@ class ValueIterationAgent(ValueEstimationAgent):
         QValue = 0
 
         for nextState, prob in self.mdp.getTransitionStatesAndProbs(state, action):
-            QValue += prob * (self.mdp.getReward(state, action, nextState) + self.discount * self.values[nextState])
+            QValue += prob * (self.mdp.getReward(state, action, nextState) + self.discount * self.values[nextState]) ##average
 
         return QValue
-        util.raiseNotDefined()
+        ##util.raiseNotDefined()
 
     def computeActionFromValues(self, state):
         """
