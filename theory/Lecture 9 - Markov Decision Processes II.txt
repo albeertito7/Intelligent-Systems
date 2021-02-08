@@ -23,3 +23,14 @@ Optimal Quantities:
 
 ** Rewards are for one time step, are instanteneous **
 ** Values are from one point to the end of the game or forever, are accumulative **
+
+
+The Bellman Equations
+    - specify in a recursive way what it means to be optimal or in other words how to compute a value we are interested in
+    - How to be optimal:
+        - Step 1: take correct first action
+        - Step 2: keep being optimal
+
+    - you max when you have a choice between actions and you average when things are not under your control
+    - V*(s) = max of Q*(s,a) over all actions a
+    - Q*(s) = Σ of all s' (T(s,a,s')[R(s,a,s') + λV*(s')])
