@@ -5,10 +5,11 @@ Recap: MDPs
         - states s
         - actions a
         - transitions P(s'| s,a) or T(s,a,s')
-        - rewards R(s,a,s') (and discount )
+        - rewards R(s,a,s') (and discount λ)
         - start state s0
     - Quantities:
         - Policy = map of states s to actions a
         - Utility = sum of discounted rewards
         - Values = expected future utility from a state (max node)
         - Q-Values = expected future utility from a q-state (chance node)
+
