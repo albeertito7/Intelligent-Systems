@@ -12,3 +12,11 @@ Recap: MDPs
         - Utility = sum of discounted rewards
         - Value of a state = what you expected your future utility to be under optimal action/behaviour (max node)
         - Q-Values = expected future utility from a q-state (chance node) (is an average outcome under optimal action)
+
+Optimal Quantities:
+    - the value (utility) of a state s:
+        - V*(s) = expected utility starting in s and acting optimally
+    - the value (utility) of a q-state (s,a):
+        - Q*(s,a) = expected utility starting out having taken an action a from state s and (thereafter) acting optimally
+    - the optimal policy:
+        π*(s) = optimal action from each state s
