@@ -42,3 +42,15 @@ Value Iteration
     - takes the bellman equations and turns them into a method of computing them
     - simply changes the equlity sign of the bellman equation into an assigment
     - Vk+1(s) <- max Σ of all s' (T(s,a,s')[R(s,a,s') + λVk(s')]) over all actions a
+
+
+Policy Methods
+
+    - Policy evalutation: How good or bad is that policy? How well will i perform if i follow it? For each state what will the value be not under optimal action but under this specific policy?
+        - For a specific policy what the values are?
+
+    - Fixed Policies
+        - expectimax trees max over all actions to compute the optimal values
+        - but if i have a fixed policy i don't have the choice between what action to take, so there's no max over a
+        - if we fixed some policy π(s), then the tree would be simplier - only one action per state
+            - ... though the tree's value would depend on which policy we fixed
