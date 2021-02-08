@@ -105,3 +105,15 @@ Problems with Value Iteration
 
 Policy Iteration
     - combines the idea of evaluating one policy (extract Vπ(s)) with the idea of improving that policy from those values
+    - alternative approach for optimal values
+    - two steps we're gonna alternate:
+        - Step 1: Policy evaluation: calculate utilities from some fixed policy (not optimal utilities!) until convergence
+        - Step 2: Policy improvement/extraction: update policy using one-step look-ahead with resulting converged (but not optimal!) utilities as future values
+        - Step 3: Repeat this until policy converges
+    - It's still optimal!
+    - Can converge (much) faster under some conditions -> when there is a larger number of actions but maximizing action doesn't change very much
+
+    - Evaluation: for fixed current policy π, find values with policy evaluation -> iterate until values convergeç
+        - Vπik+1(s) = Σ of all s' (T(s,πi(s),s')[R(s,πi(s),s') + λVπik(s')])
+    - Improvement: for fixed values, get a better policy using policy extraction -> one-step look-ahead
+        - πi+1(s) = Argmax Σ of all s' (T(s,a,s')[R(s,a,s') + λVπi(s')])
