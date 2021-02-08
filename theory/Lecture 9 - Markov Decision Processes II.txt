@@ -40,3 +40,5 @@ The Bellman Equations
 
 Value Iteration
     - takes the bellman equations and turns them into a method of computing them
+    - simply changes the equlity sign of the bellman equation into an assigment
+    - Vk+1(s) <- max Σ of all s' (T(s,a,s')[R(s,a,s') + λVk(s')]) over all actions a
