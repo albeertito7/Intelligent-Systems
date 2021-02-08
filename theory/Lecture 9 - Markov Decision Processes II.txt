@@ -34,3 +34,9 @@ The Bellman Equations
     - you max when you have a choice between actions and you average when things are not under your control
     - V*(s) = max of Q*(s,a) over all actions a
     - Q*(s) = Σ of all s' (T(s,a,s')[R(s,a,s') + λV*(s')])
+
+    - these are the Bellman equations, and they characterize optimal values in a way we will use over and over
+
+
+Value Iteration
+    - takes the bellman equations and turns them into a method of computing them
