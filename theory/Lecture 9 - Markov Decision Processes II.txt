@@ -136,3 +136,10 @@ Comparison Value Iteration vs Policy Iteration
             - we do several passses that update utilities with fixed policy (each pass is fast because we consider only one action, not all of them)
             - after the policy is evaluated, a new policy is chosen (slow like a value iteration pass)
             - the new policy will be better (or we're done)
+
+
+Summary: MDP Algorithms
+    - So we want to ...
+        - compute optimal values: use value iteration or policy iteration
+        - compute values for a particular policy == compute values from actions: use policy evaluation
+        - turn your values into a policy == compute actions from values: use policy extraction (one-step look-ahead)
