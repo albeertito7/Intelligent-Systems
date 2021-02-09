@@ -61,3 +61,6 @@ Q-Learning
 
     - Instead, so keep a running average
         Q(s,a) = (1 - α) · Q(s,a) + α · [R(s,a,s') + λ · (maxQk(s',a') over all a')])
+
+    - ** every time will get these instantaneous one-step look-ahead samples we are roll it in into the running average weighted by alpha **
+    - ** the bigger alpha is the more importance we place on new samples => we learn faster, but less stable because we give a lot of weight to each sample **
