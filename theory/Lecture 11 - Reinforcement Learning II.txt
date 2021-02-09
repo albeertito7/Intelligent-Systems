@@ -1,12 +1,40 @@
 Reinforcement Learning II
 
-- We stull assume an MDP:
-    - a set of states s
-    - a set of actions a (per state)
-    - a model transition T(s,a,s')
-    - a reward function R(s,a,s')
+Reminder:
+    - We stull assume an MDP:
+        - a set of states s
+        - a set of actions a (per state)
+        - a model transition T(s,a,s')
+        - a reward function R(s,a,s')
 
-- Still looking for a policy
-- New twist: don't know T or R, so must try out actions
+    - Still looking for a policy
+    - New twist: don't know T or R, so must try out actions
 
-- Big Idea: Compute all averages over T using sample outcomes
+    - Big Idea: Compute all averages over T using sample outcomes
+
+
+Know MDP: Offline Solution
+    - Goal:
+        - compute V*, Q*, π*
+        - evaluate a fixed policy π
+    - Technique:
+        - value / policy iteration
+        - policy evaluation
+
+
+Unknown MDP: Model-Based
+    - Goal:
+        - compute V*, Q*, π*
+        - evaluate a fixed policy π
+    Techninque:
+        - VI / PI on approx. MDP
+        - PE on approx. MDP
+
+
+Unkown MDP: Model-Free
+    - Goal:
+        - compute V*, Q*, π*
+        - evaluate a fixed policy π
+    - Techinique:
+        - Q-Learning
+        - Value Learning
