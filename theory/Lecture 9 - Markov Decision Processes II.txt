@@ -153,3 +153,4 @@ Summary: MDP Algorithms
 Offline Planning Concept:
     - not play the game and only use our knowledge about MDPs to figure out various things such as values of policies, optimal actions and so on
     - just trying to solve a MDP mentally, without doing any computation, just using our knowledge about MDPs
+    - but we can only use these offline calculation method when we know the MDP at all
