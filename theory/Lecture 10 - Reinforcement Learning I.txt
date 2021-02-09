@@ -79,3 +79,10 @@ Passive Reinforcement Learning
     - we don't know the rewards R(s,a,s')
     - just execute the policy and learn from experience
     - Goal: learn the state values
+
+
+Direct Evaluation:
+    - Goal: compute values for each state under an input fixed policy
+    - Idea: Average together observed sample values
+        - every time you visit a state, write down what the sum of discounted rewards turned out to be
+        - average those samples
