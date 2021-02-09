@@ -86,3 +86,18 @@ Direct Evaluation:
     - Idea: Average together observed sample values
         - every time you visit a state, write down what the sum of discounted rewards turned out to be
         - average those samples
+
+    - What's good about direct evaluation?
+        - it's easy to understand
+        - it doesn't require any knowledge of T,R
+        - it eventually computes the correct average values, using just sample transitions
+
+    - What bad about it?
+        - it wastes information about state connections -> to get intermediate results weird
+        - each state must be learned separately
+        - so it takes a long time to learn
+
+    - Why not use policy evaluation?
+        - this approach fully exploited the connections between the states
+        - unfortunately, we need T and R to do it!
+        - key question: How can we do this update to V without knowing T and R?
