@@ -63,7 +63,7 @@ Unknown P(A): "Model Free"
 
 Model-Free Learning
     - we don't construct a model of the transition function
-    - we take actions, and at each time we take once we compare what we though must happen to what actully happened
+    - we take actions, and at each time we take once we compare what we though must happen to what actually happened
     - an wheter something is better or worse of what we expected, we adjust our values
     - So we track the values themselves not the transitions probabilities or the rewards
 
@@ -101,3 +101,12 @@ Direct Evaluation:
         - this approach fully exploited the connections between the states
         - unfortunately, we need T and R to do it!
         - key question: How can we do this update to V without knowing T and R?
+            - Idea: take samples of outcomes s' (by doing the action!) and average => Sample-Based Policy Evaluation
+
+            - sample1 = R(s,π(s),s1') + λVπk(s1')
+            - sample2 = R(s,π(s),s2') + λVπk(s2')
+            - sampleN = R(s,π(s),sN') + λVπk(sN')
+
+            - Vπk+1(s) = (1/N) · Σ of all samples
+
+            - but there's a problem: We can't rewind time to get sample after sample from one specific state
