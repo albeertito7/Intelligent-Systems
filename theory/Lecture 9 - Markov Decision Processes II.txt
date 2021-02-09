@@ -113,13 +113,12 @@ Policy Iteration
     - It's still optimal!
     - Can converge (much) faster under some conditions -> when there is a larger number of actions but maximizing action doesn't change very much
 
-    - Evaluation: for fixed current policy π, find values with policy evaluation -> iterate until values convergeç
+    - Evaluation: for fixed current policy π, find values with policy evaluation -> iterate until values converge
         - Vπik+1(s) = Σ of all s' (T(s,πi(s),s')[R(s,πi(s),s') + λVπik(s')])
     - Improvement: for fixed values, get a better policy using policy extraction -> one-step look-ahead
         - πi+1(s) = Argmax Σ of all s' (T(s,a,s')[R(s,a,s') + λVπi(s')])
 
     - we get the seepd-up thanks to the evaluation step
-
 
 
 Comparison Value Iteration vs Policy Iteration
@@ -145,6 +144,6 @@ Summary: MDP Algorithms
         - turn your values into a policy == compute actions from values: use policy extraction (one-step look-ahead)
     
     - These all look the same!
-        - they basically are - they are all variations of Berllman updates
+        - they basically are - they are all variations of Berllman updates turned into an iteration/recursive algorithm
         - they all use one-step look-ahead expectimax fragments
         - they differ only in whether we plug in a fixed policy or max over actions
