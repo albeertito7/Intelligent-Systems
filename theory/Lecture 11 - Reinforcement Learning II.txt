@@ -38,3 +38,12 @@ Unkown MDP: Model-Free
     - Techinique:
         - Q-Learning
         - Value Learning
+
+
+Model-Free Learning
+    - literally, we are not computing the model and solved it  with respect to that same model
+    - Model-free (temporal difference) learning:
+        - experience world through episodes
+            (s,a,r,s',a',r',s'',a'',r'',s''' ...)
+        - update estimates each transition (s,a,r,s')
+        - over time, updates will mimic Bellman updates
