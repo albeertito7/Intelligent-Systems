@@ -66,3 +66,10 @@ Model-Free Learning
     - we take actions, and at each time we take once we compare what we though must happen to what actully happened
     - an wheter something is better or worse of what we expected, we adjust our values
     - So we track the values themselves not the transitions probabilities or the rewards
+
+
+Passive Reinforcement Learning
+    - Idea:
+        - some agent is taking actions and getting specific outcomes that are partialy determined by chance
+        - we need to learn from what we observe
+        - but we don't control the actions, someone else is choosing the actions
