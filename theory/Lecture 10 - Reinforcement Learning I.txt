@@ -65,4 +65,4 @@ Model-Free Learning
     - we don't construct a model of the transition function
     - we take actions, and at each time we take once we compare what we though must happen to what actully happened
     - an wheter something is better or worse of what we expected, we adjust our values
-    - So we track the values themselves not the transitions probabilities
+    - So we track the values themselves not the transitions probabilities or the rewards
