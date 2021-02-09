@@ -1,4 +1,4 @@
-Reinforcement Learning
+Reinforcement Learning I
 
 - learn how to act over time based on own experiences
 
