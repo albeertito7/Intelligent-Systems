@@ -129,3 +129,9 @@ Temporal Difference Learning
             - smaller alpha -> learn slower
         
         - ** where alpha is adjusting the error balancing accross the experiences **
+
+
+Temporal Difference Learning is doing an Exponential Moving Average
+    - the running interpolation update: Xn = (1 - α) · X(n-1) + α · Xn
+    - this averaging makes recent samples more important
+    - forgets about the past (distant past values were wrong anyway)
