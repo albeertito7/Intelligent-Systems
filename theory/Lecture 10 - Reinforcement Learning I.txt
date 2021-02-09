@@ -141,5 +141,7 @@ Temporal Difference Learning is doing an Exponential Moving Average
 Problems with TD Value Learning
     - is a model-free way to do policy evaluation, mimicking Belmman updates with running sample averages
     - but if we want to turn values into a (new) policy, we are sunk
+        - we need to compute Actions from Values and apply the Argmax,
+        - which means compute Q-Values from Values, that implies a expectimax search over T
     - Idea: learn Q-values, not values
     - makes actio selection model-free too
