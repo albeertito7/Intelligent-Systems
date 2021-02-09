@@ -20,3 +20,7 @@ Basic idea:
     - a model T(s,a,s')
     - a reward function R(s,a,s')
 - still looking for a policy
+
+- but with a new twist: don't know T or R
+    - we don't know which states are good or what the actions do
+    - must actually try actions and states out to learn
