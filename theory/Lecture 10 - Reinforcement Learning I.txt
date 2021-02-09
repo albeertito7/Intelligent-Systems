@@ -124,7 +124,7 @@ Temporal Difference Learning
         - Update to V(s): Vπ(s) = (1 - α) · Vπ(s) + (α) · sample, where α is the learning rate established
             V(s): Vπ(s) = Vπ(s) + α · (sample - Vπ(s))
 
-        - there's a tradeoff
+        - there's a tradeoff:
             - larger alpha -> learn faster
             - smaller alpha -> learn slower -> Decreasing learning rate can give converging averages
         
@@ -145,4 +145,16 @@ Problems with TD Value Learning
         - which means compute Q-Values from Values, that implies a expectimax over T,
         - but do we have T and R? Nop :(
     - Idea: learn Q-values, not values
-    - makes actio selection model-free too
+    - makes actio selection model-free too -> we look at the Q-values and just choose the one is better
+
+** Q-values are critical for choosing actions in reinforcement learning **
+
+
+Active Reinforcement Learning
+    - you have to try things
+
+    - Full reinforcement learning: optimal policies (like value iteration)
+        - we don't know the transitions
+        - we don't know the rewards
+        - we choose the actions now, not by a fixed policy
+        - Goal: learn the optimal policy/values
