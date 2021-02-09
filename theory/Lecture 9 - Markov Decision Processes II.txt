@@ -154,3 +154,13 @@ Offline Planning Concept:
     - not play the game and only use our knowledge about MDPs to figure out various things such as values of policies, optimal actions and so on
     - just trying to solve a MDP mentally, without doing any computation, just using our knowledge about MDPs
     - but we can only use these offline calculation method when we know the MDP at all
+
+
+*** Policy Iteration introduce the idea of REINFORCEMENT LEARNING, because as we improve the policies we get, we are learning from experience **
+
+Important ideas in reinforcement learning that came up:
+    - Exploration: you have to try unknown actions to get information
+    - Exploitation: eventually, you have to use what you know
+    - Regret: even if you learn intelligently, you make mistakes
+    - Sampling: because of chance, you have to try things repeatedly
+    - Difficulty: learning can be much harder than solving a known MDPs
