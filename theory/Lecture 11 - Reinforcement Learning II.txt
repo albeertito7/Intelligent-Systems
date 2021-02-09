@@ -64,3 +64,12 @@ Q-Learning
 
     - ** every time will get these instantaneous one-step look-ahead samples we are roll it in into the running average weighted by alpha **
     - ** the bigger alpha is the more importance we place on new samples => we learn faster, but less stable because we give a lot of weight to each sample **
+
+
+** Q-Learning is amazing because learns the optimal policy even thoug we don't follow it **
+
+
+Exploration vs Exploitation: trade-off
+
+     - exploration: we try things, but knowing could be disastrous or not :)
+     - exploitation: we continue do the things which currently appear to be good
