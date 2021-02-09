@@ -181,3 +181,11 @@ Q-Learning: sample-based Q-value iteration
     - sample = R(s,a,s') + λ · (maxQ(s',a') over all a')
     - finally incorporate the new estimate into a running average:
         - Q(s,a) = (1 - α) · Q(s,a) + (α) · sample
+
+Q-Learning Properties
+    - Amazing result: Q-Learning converges to optimal policy --even if you are action suboptimally
+    - this is called off-policy learning
+    - Caveats:
+        - you have to explore enough
+        - you have to eventually make the learning rate samll enough ... but not decrease it too quickly
+        - basically, in the limit, it doesn't matter how you select actions (!)
