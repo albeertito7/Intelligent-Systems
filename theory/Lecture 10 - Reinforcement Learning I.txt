@@ -172,4 +172,12 @@ Detour: Q-Value Iteration
         - Given Qk, calculate the depth k+1 q-values for all q-states
     
     - so:
-        Qk+1(s,a) = Σ of all s' (T(s,a,s')[R(s,a,s') + λ · (maxQ(s',a') over all a')])
+        Qk+1(s,a) = Σ of all s' (T(s,a,s')[R(s,a,s') + λ · (maxQ(s',a') over all a')]) => sample-based Q-value iteration = Q-Learning
+
+
+Q-Learning: sample-based Q-value iteration
+    - learn Q(s,a) values as we go => we are making q-value approximation and not value approximation
+    - we are at Q(s,a), we take the action an we are gonna learn something from this => receive a sample (s,a,s',r)
+    - sample = R(s,a,s') + λ · (maxQ(s',a') over all a')
+    - finally incorporate the new estimate into a running average:
+        - Q(s,a) = (1 - α) · Q(s,a) + (α) · sample
