@@ -158,3 +158,18 @@ Active Reinforcement Learning
         - we don't know the rewards
         - we choose the actions now, not by a fixed policy
         - Goal: learn the optimal policy/values
+
+
+Detour: Q-Value Iteration
+
+    - Value iteration: find successive (depth-limited) values
+        - Start with V0(s) = 0, which we know is right
+        - Given Vk, calculate the depth k+1 values for all states
+        - Vk+1(s) <- max Σ of all s' (T(s,a,s')[R(s,a,s') + λVk(s')]) over all actions a
+
+    - But Q-Values are more useful, so compute them instead
+        - Start with Q0(s,a) = 0, which we know is right
+        - Given Qk, calculate the depth k+1 q-values for all q-states
+    
+    - so:
+        Qk+1(s,a) = Σ of all s' (T(s,a,s')[R(s,a,s') + λ · (maxQ(s',a') over all a')])
