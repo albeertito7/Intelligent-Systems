@@ -147,3 +147,9 @@ Summary: MDP Algorithms
         - they basically are - they are all variations of Berllman updates turned into an iteration/recursive algorithm
         - they all use one-step look-ahead expectimax fragments
         - they differ only in whether we plug in a fixed policy or max over actions
+
+
+
+Offline Planning Concept:
+    - not play the game and only use our knowledge about MDPs to figure out various things such as values of policies, optimal actions and so on
+    - just trying to solve a MDP mentally, without doing any computation, just using our knowledge about MDPs
