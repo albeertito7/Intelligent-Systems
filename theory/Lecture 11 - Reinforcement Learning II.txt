@@ -1,0 +1,12 @@
+Reinforcement Learning II
+
+- We stull assume an MDP:
+    - a set of states s
+    - a set of actions a (per state)
+    - a model transition T(s,a,s')
+    - a reward function R(s,a,s')
+
+- Still looking for a policy
+- New twist: don't know T or R, so must try out actions
+
+- Big Idea: Compute all averages over T using sample outcomes
