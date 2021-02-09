@@ -103,10 +103,22 @@ Direct Evaluation:
         - key question: How can we do this update to V without knowing T and R?
             - Idea: take samples of outcomes s' (by doing the action!) and average => Sample-Based Policy Evaluation
 
-            - sample1 = R(s,π(s),s1') + λVπk(s1')
-            - sample2 = R(s,π(s),s2') + λVπk(s2')
-            - sampleN = R(s,π(s),sN') + λVπk(sN')
+            - sample1 = R(s,π(s),s1') + λVπ(s1')
+            - sample2 = R(s,π(s),s2') + λVπ(s2')
+            - sampleN = R(s,π(s),sN') + λVπ(sN')
 
             - Vπk+1(s) = (1/N) · Σ of all samples
 
             - but there's a problem: We can't rewind time to get sample after sample from one specific state
+
+Temporal Difference Learning
+    - Big Idea: learn from every experience
+        - update V(s) each time we experience a transition (s,a,s',r)
+        - likely outcomes s' will contribute updates moer often
+    
+    - temporal difference learning from values
+        - policy still fixed, still doing evaluation!
+        - move values toward value of whatever successor occurs: running average
+
+        - Sample of V(s): sample = R(s,π(s),s') + λVπ(s')
+        - Update to V(s): Vπ(s) = (1 - α) · Vπ(s) + (α) · sample, where α is the learning rate established
