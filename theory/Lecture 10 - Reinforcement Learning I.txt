@@ -40,3 +40,11 @@ Model-Based Learning
 Model-Based Idea:
     - learn an approximate model based on experience
     - solve for values as if the learned model were correct
+
+    - Step 1: Learn empirical MDP model
+        Goal: learn some MDP that we could use to run things like value iteration
+        - count outcomes s' for each s,a
+        - normalize to give an estimate of T(s,a,s')
+        - discover each R(s,a,s') when we experience (s,a,s')
+    
+    - Step 2: Solve the learned MDP
