@@ -143,3 +143,8 @@ Summary: MDP Algorithms
         - compute optimal values: use value iteration or policy iteration
         - compute values for a particular policy == compute values from actions: use policy evaluation
         - turn your values into a policy == compute actions from values: use policy extraction (one-step look-ahead)
+    
+    - These all look the same!
+        - they basically are - they are all variations of Berllman updates
+        - they all use one-step look-ahead expectimax fragments
+        - they differ only in whether we plug in a fixed policy or max over actions
