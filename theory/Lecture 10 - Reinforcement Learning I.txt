@@ -1,0 +1,22 @@
+Reinforcement Learning
+
+- learn how to act over time based on own experiences
+
+Basic idea:
+    - Receive feedback in the form of rewards
+    - Agent's utility is defined by the reward function
+    - Must (learn to) act so as to maximize expected rewards
+    - All learning is based on observed samples of outcomes!
+
+- we have an agent as always
+- the agent has actions available, and chose one
+- the environment affects the transition between state s and s'
+- finally the agent receives back two things: the reward (could be a bonus or a penalty) and the sate s'
+
+
+- Still assume Markov decision process (MDP)
+    - a set of states s
+    - a set of actions a (per state)
+    - a model T(s,a,s')
+    - a reward function R(s,a,s')
+- still looking for a policy
