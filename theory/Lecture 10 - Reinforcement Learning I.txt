@@ -136,3 +136,10 @@ Temporal Difference Learning is doing an Exponential Moving Average
     - this averaging makes recent samples more important
     - forgets about the past (distant past values were wrong anyway)
     - because of the future value estimation added to the samples, the recent samples are better; so it's amazing this formulation gives less power to the past values
+
+
+Problems with TD Value Learning
+    - is a model-free way to do policy evaluation, mimicking Belmman updates with running sample averages
+    - but if we want to turn values into a (new) policy, we are sunk
+    - Idea: learn Q-values, not values
+    - makes actio selection model-free too
