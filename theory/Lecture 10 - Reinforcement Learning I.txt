@@ -48,3 +48,14 @@ Model-Based Idea:
         - discover each R(s,a,s') when we experience (s,a,s')
     
     - Step 2: Solve the learned MDP
+
+** Use the samples to reconstruct an approximation of what is unknown **
+
+
+Unknown P(A): "Model Based"
+    - P(a) = num(a)/N
+    - E[A] ≈ Σ P(a) · a over all actions a
+
+Unknown P(A): "Model Free"
+    - average the samples directly, and do an unweighted average
+    - E[A] ≈ 1/N · Σ a over all actions a
