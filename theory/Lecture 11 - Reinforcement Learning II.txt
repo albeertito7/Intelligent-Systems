@@ -47,3 +47,7 @@ Model-Free Learning
             (s,a,r,s',a',r',s'',a'',r'',s''' ...)
         - update estimates each transition (s,a,r,s')
         - over time, updates will mimic Bellman updates
+
+    - ** all model-free methods we are gonna talk update one transition at a time **
+    - so every time we observe ourself going from some state s taking an action a and getting a reward r' in an outcome, thats a transition
+    - and every transition will improve your knowledge and do an update
