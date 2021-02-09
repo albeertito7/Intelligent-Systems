@@ -30,4 +30,13 @@ Offline (MDPs) vs Online (RL)
     - Offline solution: is when you know what actions will do and in computation/simulation in your head you think about consequences, applying a dynamic value iteration or a expectimax search mentally
     - Online learning: if we are in the grid world, we need to jump into the pit because the agent doesn't know it is bad as we assume in the offline solution
 
-** How the agent will be able to learn how to act when is not know what the actions do and what rewards are got? **
+** How the agent will be able to learn how to act when is not know what actions do and what rewards are got? **
+
+
+Model-Based Learning
+    - we reduce the reinforcement learning problem to the previous case of a known MDP
+    - we will try to figure out the model, what de transitions do and what are the rewards
+
+Model-Based Idea:
+    - learn an approximate model based on experience
+    - solve for values as if the learned model were correct
