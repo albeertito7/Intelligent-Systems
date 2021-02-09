@@ -51,3 +51,13 @@ Model-Free Learning
     - ** all model-free methods we are gonna talk update one transition at a time **
     - so every time we observe ourself going from some state s taking an action a and getting a reward r' in an outcome, thats a transition
     - and every transition will improve your knowledge and do an update
+
+
+Q-Learning
+
+    - We would like to do Q-Value updates to each Q-state:
+        Qk+1(s,a) = Σ of all s' (T(s,a,s')[R(s,a,s') + λ · (maxQk(s',a') over all a')])
+    - but can't compute this update without knowing T, R
+
+    - Instead, so keep a running average
+        Q(s,a) = (1 - α) · Q(s,a) + α · [R(s,a,s') + λ · (maxQk(s',a') over all a')])
