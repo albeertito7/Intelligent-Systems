@@ -123,3 +123,9 @@ Temporal Difference Learning
         - Sample of V(s): sample = R(s,π(s),s') + λVπ(s')
         - Update to V(s): Vπ(s) = (1 - α) · Vπ(s) + (α) · sample, where α is the learning rate established
             V(s): Vπ(s) = Vπ(s) + α · (sample - Vπ(s))
+
+        - there's a tradeoff
+            - larger alpha -> learn faster
+            - smaller alpha -> learn slower
+        
+        - ** where alpha is adjusting the error balancing accross the experiences **
