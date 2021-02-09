@@ -138,6 +138,7 @@ Comparison Value Iteration vs Policy Iteration
 
 
 Summary: MDP Algorithms
+
     - So we want to ...
         - compute optimal values: use value iteration or policy iteration
         - compute values for a particular policy == compute values from actions: use policy evaluation
