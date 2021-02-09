@@ -117,3 +117,22 @@ Policy Iteration
         - Vπik+1(s) = Σ of all s' (T(s,πi(s),s')[R(s,πi(s),s') + λVπik(s')])
     - Improvement: for fixed values, get a better policy using policy extraction -> one-step look-ahead
         - πi+1(s) = Argmax Σ of all s' (T(s,a,s')[R(s,a,s') + λVπi(s')])
+
+    - we get the seepd-up thanks to the evaluation step
+
+
+
+Comparison Value Iteration vs Policy Iteration
+    - both compute the same thing -> optimal value for each state
+        - we input an MDP and the output is an optimal quantity
+        - they both gets optimal values but also provide optimal policy
+            - policy iteration provides a policy inmediatly, at it iteration
+            - an value iteration we just keep track of it as we go
+        
+        - In value iteration:
+            - every iteration updates both values and (implicitly) the policy
+            - we don't track the policy, but taking the max over actions implicitly recomputes it
+        - In policy iteration:
+            - we do several passses that update utilities with fixed policy (each pass is fast because we consider only one action, not all of them)
+            - after the policy is evaluated, a new policy is chosen (slow like a value iteration pass)
+            - the new policy will be better (or we're done)
