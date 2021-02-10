@@ -156,3 +156,4 @@ Approximate Q-Learning
         - Intuitive interpretation:
             - adjust weights of active features
             - e.g. if something unexpectedly bad happens, blame the features that were on: disprefer all states with that state's features
+    - our knowledge is encapsulated in a vector of feature weights, and we are evaluationg each q-state about how good or bad are its features and not by its q-state expected value
