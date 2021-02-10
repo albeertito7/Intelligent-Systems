@@ -207,3 +207,5 @@ Policy Search
         - How do we tell the policy got better?
         - Need to reun many sample episodes!
         - If there are a lot of features, this can be impractical!
+
+    - Better methods exploit look-ahead structure, sample wisely, change multiple parameters ...
