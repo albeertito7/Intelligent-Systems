@@ -89,5 +89,9 @@ Exploration Functions -> When to explore?
     - Random actions: explore a fixed amount -> every state has an equal chance of handling an exploration action
     - Better idea: explore areas whose badness is not (yet) extablished, eventually stop exploring
         - in the face of uncertainty we should have optimism
-        - but should last forever, so it might has a function like
-            f(u, n) = u + k/n
+        - but should last forever, so it might has a function like:
+            - f(u, n) = u + k/n
+            - takes a value estimate u and a visit count n, and returns an optimistic utility
+            - rather than looking at just utilities of Q-states, we have a function that considers our guests at the utility and the number of times we've been there
+            - n means the number of times we've tried that option out
+            - so we take the utility and add an optimism bonus, that decreses as we visit the state more times n
