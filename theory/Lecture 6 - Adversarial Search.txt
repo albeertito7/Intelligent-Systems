@@ -11,13 +11,13 @@ Multiagent environments:
 
 GOAL:
 	- to have a CONTINGENT PLAN to win the game, to neutralize the adversarial agents
-	- we need to give a function which tells us in any given state what to do
+	- we need to set up a function to tells us in any given state what to do
 
 
 We look into competitive environments, where agents’ goals are in conflict, giving rise to ADVERSARIAL GAMES
 
 
-**Reflex agent: just look at ur possible actions and apply a functions about how good would be the actions but just think one step ahead, not building a tree as the minimax function**
+**Reflex agent: just look at ur possible actions and apply a function about how good would be the actions but just think one step look-ahead, not building a tree as the minimax function**
 **Reflex agent is not optimal and not exponential**
 
 
