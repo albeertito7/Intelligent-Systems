@@ -151,3 +151,8 @@ Approximate Q-Learning
     - transition = (s,a,r,s')
     - difference = [R(s,a,s') + λ · (maxQ(s',a') over all a')] - Q(s,a)  (difference = error between what you get and what you though were gonna get)
     - update Exact Q's: Q(s,a) = Q(s,a) + α·[difference]
+    - Approximate Q's: wi = wi + α·[difference] · fi(s,a)
+    - instead of increasing the Q-value directly we increase the weights
+        - Intuitive interpretation:
+            - adjust weights of active features
+            - e.g. if something unexpectedly bad happens, blame the features that were on: disprefer all states with that state's features
