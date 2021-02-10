@@ -66,10 +66,19 @@ Q-Learning
     - ** the bigger alpha is the more importance we place on new samples => we learn faster, but less stable because we give a lot of weight to each sample **
 
 
-** Q-Learning is amazing because learns the optimal policy even thoug we don't follow it **
-
+** Q-Learning is amazing because learns the optimal policy even though we don't follow it **
+** but doesn't tells us how to select those actions **
 
 Exploration vs Exploitation: trade-off
-
      - exploration: we try things, but knowing could be disastrous or not :)
      - exploitation: we continue do the things which currently appear to be good
+
+How to Explore? -> how to select actions?
+    - Simplest: random actions (ε-greedy)
+        - every step, flip a coin
+        - with (small) probability ε, act randomly
+        - with (large) probability 1-ε, act on current policy
+    - Problems with random actions?
+        - you do eventually explore the sapace, but keep thrashing around once learning is done
+        - One solution: lower ε over time
+        - Another solution: exploration functions
