@@ -318,16 +318,16 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
         def actions(gameState, agent):
           return gameState.getLegalActions(agent)
 
-        ## the max_value function will be the same as minimax algorithm, not applying the probabilities
+        # the max_value function will be the same as minimax algorithm, not applying the probabilities
         def max_value(gameState, agent, depth):
           if terminalTest(gameState, depth):
             return utility(gameState)
           v = -sys.maxsize
           for action in actions(gameState, agent):
-            v = max(v, min_value(result(gameState, agent, action), 1, depth))
+            v = max(v, exp_value(result(gameState, agent, action), 1, depth))
           return v
 
-        def min_value(gameState, agent, depth):
+        def exp_value(gameState, agent, depth):
           if terminalTest(gameState, depth):
             return utility(gameState)
           v = []
@@ -336,7 +336,7 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
               v.append(max_value(result(gameState, agent, action), 0, depth-1))
             else:
               v.append(min_value(result(gameState, agent, action), agent+1, depth))
-          return sum(v)/float(len(v)) ## non-weighted average
+          return sum(v)/float(len(v)) # non-weighted average
           
           """
           v = 0
@@ -349,19 +349,19 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
           return v/float(len(actionsList))
           """
 
-        ## return action!!! ## minimax-decision algorithm applied
+        # return action!!! # minimax-decision algorithm applied
         v = -sys.maxsize
         actionSet = []
         for action in actions(gameState, 0): ## agent 0 (pacman) which is the one who apply the minimax-decision function
-          u = min_value(result(gameState, 0, action), 1, self.depth) ## the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
-          if u == v: ## if the value is equal, add to the set of actions
+          u = exp_value(result(gameState, 0, action), 1, self.depth) ## the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
+          if u == v: # if the value is equal, add to the set of actions
             actionSet.append(action)
-          elif u > v: ## if its a better value (max), reinitialize the set of good actions
+          elif u > v: # if its a better value (max), reinitialize the set of good actions
             v = u
             actionSet = [action]
         
-        ## need to return the action that pacman must take
-        return random.choice(actionSet) ## random choice between all minimax actions got
+        # need to return the action that pacman must take
+        return random.choice(actionSet) # random choice between all minimax actions got
 
 def betterEvaluationFunction(currentGameState):
     """
