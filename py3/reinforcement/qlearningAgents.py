@@ -11,7 +11,6 @@
 # Student side autograding was added by Brad Miller, Nick Hay, and
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
-
 from game import *
 from learningAgents import ReinforcementAgent
 from featureExtractors import *
@@ -110,11 +109,9 @@ class QLearningAgent(ReinforcementAgent): ## now we are computing q-values inste
         "*** YOUR CODE HERE ***"
         if len(legalActions) != 0: # are there some legal actions?
           if util.flipCoin(self.epsilon): # as we are using random choice, we simply flip a coin -> modelling that by using epsilon
-            # exploration
-            action = random.choice(legalActions) # take a random action
+            action = random.choice(legalActions) # take a random action -> exploration
           else:
-            # explotation
-            action = self.computeActionFromQValues(state) # the best action (max), follow the best policy learned till now
+            action = self.computeActionFromQValues(state) # the best action (max), follow the best policy learned till now -> exploitation
         return action
         #util.raiseNotDefined()
 
@@ -184,21 +181,20 @@ class ApproximateQAgent(PacmanQAgent):
     def __init__(self, extractor='IdentityExtractor', **args):
         self.featExtractor = util.lookup(extractor, globals())()
         PacmanQAgent.__init__(self, **args)
-        self.weights = util.Counter()
+        self.weights = util.Counter() # we are not storing anymore the expected q-values, but we are using weighted features to know how good is a q-state
 
     def getWeights(self):
         return self.weights
 
-    def getQValue(self, state, action):
+    def getQValue(self, state, action): # calc the q-value at a specific moment, from the currently weights applied to each feature
         """
           Should return Q(state,action) = w * featureVector
           where * is the dotProduct operator
         """
         "*** YOUR CODE HERE ***"
-
-        features = self.featExtractor.getFeatures(state, action)
+        features = self.featExtractor.getFeatures(state, action) # list of features -> functions that let us know how good or bad is a specific state depending on the factor computed
         qvalue = 0
-        for f in features:
+        for f in features: # for each feature, we weighted it by its weight -> linear function where Q(s,a) = w1·f1(s,a) ... wn·fn(s,a)
           qvalue += self.getWeights()[f] * features[f]
         return qvalue
         # util.raiseNotDefined()
@@ -208,16 +204,16 @@ class ApproximateQAgent(PacmanQAgent):
            Should update your weights based on transition
         """
         "*** YOUR CODE HERE ***"
-        ## to calc the difference
+        # to calc the difference
         features = self.featExtractor.getFeatures(state, action)
         sample = reward + self.discount * self.computeValueFromQValues(nextState)
-        oldQValue = self.getQValue(state, action)
+        oldQValue = self.getQValue(state, action) # now is not returned the expected q-value, but the weighted featured q-value
         difference = sample - oldQValue
 
-        ## iteration
+        # iteration
         for f in features:
-          self.weights[f] = self.weights[f] + self.alpha * (difference) * features[f] ## updating the weights
-        #util.raiseNotDefined()
+          self.weights[f] = self.weights[f] + self.alpha * (difference) * features[f] # updating the weights
+        # util.raiseNotDefined()
 
     def final(self, state):
         "Called at the end of each game."
