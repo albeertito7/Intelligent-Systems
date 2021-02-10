@@ -157,3 +157,13 @@ Approximate Q-Learning
             - adjust weights of active features
             - e.g. if something unexpectedly bad happens, blame the features that were on: disprefer all states with that state's features
     - our knowledge is encapsulated in a vector of feature weights, and we are evaluationg each q-state about how good or bad are its features and not by its q-state expected value
+
+    ** you can have non-linear features but for now the final combination of them all must be linear **
+
+
+    Q-Learning and Least Squares
+    Linear Approximation: Regression*a
+        - Prediction: ^y = w0 + w1 · f1(x)
+
+        - Total Error: Σ (yi - ^yi)^2 over all i where yi is our observation, and the difference is our error
+            - Σ over i of (yi - Σ over k of wk·fk(xi))^2
