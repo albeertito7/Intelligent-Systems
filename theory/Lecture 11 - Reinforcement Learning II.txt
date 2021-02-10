@@ -117,3 +117,19 @@ Approximate Q-Learning
     - In realistic situation, we cannot possibly learn about every single state!
         - too many states to visit them all in training
         - too many states to hold the q-tables in memory
+
+    - Instead, we want to generalize:
+        - learn about some small number of training states from experience
+        - generalize that experience to new, similar situations
+        - this is a fundamental idea in machine learning, and we'll see it over and over again
+
+    - Solution: describe a state using a vector of features (properties)
+        - features are functions from states to real numbers (often 0/1) that capture important properties of the state
+        - example features:
+            - distance to closes ghost
+            - distance to closes dot
+            - number of ghost
+            - 1/(dist to dot)^2
+            - Is Pacman in a tunnel? (0/!) ... etc
+        - can also describe a q-state (s,a) with features
+            - e.g. action moves closer to food
