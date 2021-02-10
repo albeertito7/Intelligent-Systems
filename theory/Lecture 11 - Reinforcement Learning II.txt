@@ -166,4 +166,18 @@ Approximate Q-Learning
         - Prediction: ^y = w0 + w1 · f1(x)
 
         - Total Error: Σ (yi - ^yi)^2 over all i where yi is our observation, and the difference is our error
-            - Σ over i of (yi - Σ over k of wk·fk(xi))^2
+            - Σ ovser i of (yi - Σ over k of wk·fk(xi))^2
+
+
+Minimizing Error*
+    - imagine we had only one pont x, with features f(x), target value y, and weights w:
+        - error(w) = (1/2)(y- Σ over k of wk·fk(x))^2
+        -the error is the difference between the target y and the approximation ^y
+
+        - derivating this expression to get the minimum, we now know that to make the error big we need to go to the direction of the feature vector that are contributing to this mistake
+        - wm = wm + α·(y - Σ over k of wk·fk(x)) · fm(x)
+
+        - Approximate q-update explained:
+            - wm = wm + α·[R(s,a,s') + λ · (maxQ(s',a') over all a') - Q(s,a)] · fm(s,a)
+            - where [R(s,a,s') + λ · (maxQ(s',a')] is the target, what you get
+            - and Q(s,a) is the prediction, what you expect to get
