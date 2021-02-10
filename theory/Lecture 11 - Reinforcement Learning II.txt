@@ -187,3 +187,23 @@ Minimizing Error*
 Overfitting: Why Limiting Capacity Can Help*
     - using a linear combination of the features and not a non-linear
     - we want to generalize and approximate
+
+
+
+Policy Search
+    - you directly try to improve the policy
+
+    - Problem: often the feature-based policies that work well (win games, maximize utilities) aren't the ones that approximate V/Q best
+
+    - Solution: learn policies that maximize the rewards, not the values that predict them
+
+    - Policy search: start with an ok solution (e.g. Q-learning) then fine-tune by hill climbing on feature weights
+
+    - Simplest policy search:
+        - start with an initial linear value function or Q-function
+        - nudge each feature weight up and down and see if your policy is better than before
+    
+    - Problems:
+        - How do we tell the policy got better?
+        - Need to reun many sample episodes!
+        - If there are a lot of features, this can be impractical!
