@@ -181,3 +181,9 @@ Minimizing Error*
             - wm = wm + α·[R(s,a,s') + λ · (maxQ(s',a') over all a') - Q(s,a)] · fm(s,a)
             - where [R(s,a,s') + λ · (maxQ(s',a')] is the target, what you get
             - and Q(s,a) is the prediction, what you expect to get
+
+
+
+Overfitting: Why Limiting Capacity Can Help*
+    - using a linear combination of the features and not a non-linear
+    - we want to generalize and approximate
