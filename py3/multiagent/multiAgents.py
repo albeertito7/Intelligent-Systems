@@ -11,7 +11,6 @@
 # Student side autograding was added by Brad Miller, Nick Hay, and
 # Pieter Abbeel (pabbeel@cs.berkeley.edu).
 
-
 from util import manhattanDistance
 from game import Directions
 import random, util
@@ -42,14 +41,14 @@ class ReflexAgent(Agent):
         legalMoves = gameState.getLegalActions()
 
         # Choose one of the best actions
-        scores = [self.evaluationFunction(gameState, action) for action in legalMoves]
-        bestScore = max(scores)
-        bestIndices = [index for index in range(len(scores)) if scores[index] == bestScore]
+        scores = [self.evaluationFunction(gameState, action) for action in legalMoves] # get action scores via evaluation each of them by the evaluation function
+        bestScore = max(scores) # maximize the score
+        bestIndices = [index for index in range(len(scores)) if scores[index] == bestScore] # are there multiple bestScores? get the index of all those ones
         chosenIndex = random.choice(bestIndices) # Pick randomly among the best
 
         "Add more of your code here if you want to"
 
-        return legalMoves[chosenIndex]
+        return legalMoves[chosenIndex] # choose the action
 
     def evaluationFunction(self, currentGameState, action):
         """
@@ -68,45 +67,45 @@ class ReflexAgent(Agent):
         """
         # Useful information you can extract from a GameState (pacman.py)
         successorGameState = currentGameState.generatePacmanSuccessor(action)
-        newPos = successorGameState.getPacmanPosition()
+        newPos = successorGameState.getPacmanPosition() # new pacman position in coordinates
         newFood = successorGameState.getFood()
         newGhostStates = successorGameState.getGhostStates()
         newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
 
         "*** YOUR CODE HERE ***"
-        #return successorGameState.getScore()
+        # return successorGameState.getScore()
 
-        old_food = currentGameState.getFood() ## old food state, is a matrix
-        total_score = 0.0 ## our personal score to be returned
+        old_food = currentGameState.getFood() # old food state, is a matrix
+        total_score = 0.0 # our personal score to be returned by the evaluation function
 
-        for x in range(old_food.width):
+        for x in range(old_food.width): # iterates through the old_food position matrix
           for y in range(old_food.height):
-            if old_food[x][y]: ## if there is food
-              d = manhattanDistance((x, y), newPos) ## compute the right angle distance between food coordinates and new pacman position
-              if d==0: ## if its next to the pacman
-                  total_score += 100 ## add a good value to the score
+            if old_food[x][y]: # if there is food
+              d = manhattanDistance((x, y), newPos) # compute the right angle distance between food coordinates and new pacman position
+              if d==0: # if its next to the pacman
+                  total_score += 100 # add a good value to the score
               else:
-                total_score += 1.0/(d*d) ## add a value depending on the distance
+                total_score += 1.0/(d*d) # add a value depending on the distance
 
-        ## need to consider not only the food but also the position of the ghost that must affect the score too 
+        # need to consider not only the food but also the position of the ghost that must affect the score too 
         for ghost in newGhostStates:
           d = manhattanDistance(ghost.getPosition(), newPos)
           if d<=1:
             if(ghost.scaredTimer != 0):
               total_score += 2000
             else:
-              total_score -= 200
+              total_score -= 200 # as the ghost are more scary is needed to apply severe discount
 
-        ## also would be so interesting to consider the capsules/fruits and if it's good or not to eat these ones
-        ## for now we are considering them as the highest valueble elements, not applying any kind of condition
+        # also would be so interesting to consider the capsules/fruits and if it's good or not to eat these ones
+        # for now we are considering them as the highest valueble elements, not applying any kind of condition
         for capsule in currentGameState.getCapsules():
           d = manhattanDistance(capsule, newPos) 
           if d==0:
-            total_score += 3000
+            total_score += 3000 # highley valuated
           else:
-            total_score += 1.0/(d*d)
+            total_score += 1.0/(d*d) # the same dependency on how far the fruit is
 
-        return total_score
+        return total_score # return our approx score for the nextState (s,a) based on our knowledgement of the game
 
 def scoreEvaluationFunction(currentGameState):
     """
@@ -143,7 +142,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
     Your minimax agent (question 2)
     """
 
-    def getAction(self, gameState): ## this the minimax-decision function that returns an action using minimax algorithm
+    def getAction(self, gameState): # this the minimax-decision function that returns an action using minimax algorithm
         """
         Returns the minimax action from the current gameState using self.depth
         and self.evaluationFunction.
@@ -167,36 +166,36 @@ class MinimaxAgent(MultiAgentSearchAgent):
         Returns whether or not the game state is a losing state
         """
         "*** YOUR CODE HERE ***"
-        ## util.raiseNotDefined()
+        # util.raiseNotDefined()
 
-        ## implementation functions for doing minimax-decision algorithm
+        # implementation functions for doing minimax-decision algorithm
         import sys
         
-        ## transition model, defines the result (newGameState) of an agent's action in a gameState
+        # transition model, defines the result (newGameState) of an agent's action in a gameState
         def result(gameState, agent, action):
           return gameState.generateSuccessor(agent, action)
         
-        ## return the set of legal actions of an agent in a specific state
+        # return the set of legal actions of an agent in a specific state
         def actions(gameState, agent):
           return gameState.getLegalActions(agent)
 
-        ## defines the final numeric value for a game that ends in terminal state
+        # defines the final numeric value for a game that ends in terminal state
         def utility(gameState):
           return self.evaluationFunction(gameState)
 
-        ## which is true when the game is over, otherwise is false
-        def terminalTest(gameState, depth): ## how much depth is left? how much further pacman can go through the tree? ## self.depth is not this one
-          return depth == 0 or gameState.isWin() or gameState.isLose()
+        # which is true when the game is over, otherwise is false
+        def terminalTest(gameState, depth): # how much depth is left? how much further pacman can go through the tree? ## self.depth is not this one
+          return depth == 0 or gameState.isWin() or gameState.isLose() # from the terminal states it's possible to calc the utility value
 
         ## 
         def max_value(gameState, agent, depth):
-          if terminalTest(gameState, depth): ## is a terminal state or need to stop going deeper
-            return utility(gameState) ## returns the score value
-          v = -sys.maxsize ## represents minus infinite, temporal variable, need to find the max of the minimum value
+          if terminalTest(gameState, depth): # is a terminal state or need to stop going deeper
+            return utility(gameState) # returns the score value
+          v = -sys.maxsize # represents minus infinite, temporal variable, need to find the max of the minimum value
           for action in actions(gameState, agent): ## iterate through the set of legal actions
-            ## getting the max between thee temporal var and the min_value result function
-            ## min_value: gets the min utility value of the gameStates from applying the action
-            v = max(v, min_value(result(gameState, agent, action), 1, depth)) ## 1 cuz the next agent is the first ghost
+            # getting the max between thee temporal var and the min_value result function
+            # min_value: gets the min utility value of the gameStates from applying the action
+            v = max(v, min_value(result(gameState, agent, action), 1, depth)) # 1 cuz the next agent is the first ghost
           return v
 
         ##
@@ -337,7 +336,7 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
               v.append(max_value(result(gameState, agent, action), 0, depth-1))
             else:
               v.append(min_value(result(gameState, agent, action), agent+1, depth))
-          return sum(v)/float(len(v))
+          return sum(v)/float(len(v)) ## non-weighted average
           
           """
           v = 0
