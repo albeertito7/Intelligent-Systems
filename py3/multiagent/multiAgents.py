@@ -237,10 +237,10 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         ## util.raiseNotDefined()
         import sys
 
-        def result(gameState, agent, action):
+        def result(gameState, agent, action): # transition function
             return gameState.generateSuccessor(agent, action)
 
-        def utility(gameState):
+        def utility(gameState): #utility function to evaluate
             return self.evaluationFunction(gameState)
 
         def terminalTest(gameState, depth):
@@ -256,8 +256,8 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
           for action in actions(gameState, agent):
             v = max(v, min_value(result(gameState, agent, action), 1, depth, alpha, beta))
             if v > beta:
-              return v
-            alpha = max(alpha, v)
+              return v # prunning because min(beta, v) always will be beta
+            alpha = max(alpha, v) # otherwise, update 
           return v
 
         def min_value(gameState, agent, depth, alpha, beta):
@@ -270,8 +270,8 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
             else:
               v = min(v, min_value(result(gameState, agent, action), agent+1, depth, alpha, beta))
             if v < alpha:
-              return v
-            beta = min(beta, v)
+              return v # prunning because max(alpha, v) always will be alpha
+            beta = min(beta, v) # otherwise, update
           return v
 
         v = -sys.maxsize
