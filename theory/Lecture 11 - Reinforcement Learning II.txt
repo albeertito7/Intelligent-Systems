@@ -209,3 +209,14 @@ Policy Search
         - If there are a lot of features, this can be impractical!
 
     - Better methods exploit look-ahead structure, sample wisely, change multiple parameters ...
+
+
+    Conclusion
+        - We're done with Part I: Search and Planning!!
+        - We've seen how AI methods can solve problems in:
+            - Search
+            - Constraint Satisfaction Problems
+            - Games
+            - Markov Decision Problems
+            - Reinforcement Learning
+        - Next up: Part II: Uncertainty and Learning!!
