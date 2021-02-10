@@ -79,6 +79,8 @@ How to Explore? -> how to select actions?
         - with (small) probability ε, act randomly
         - with (large) probability 1-ε, act on current policy
     - Problems with random actions?
-        - you do eventually explore the sapace, but keep thrashing around once learning is done
-        - One solution: lower ε over time
-        - Another solution: exploration functions
+        - you do eventually explore the sapace, but keep thrashing around once learning is done -> ** if u keep ε high **
+        - the exploration is unstructured -> you try random things wheter is needed or not even if you know what the actions do
+        - if you know what all the actions do you shouldn't necessarily be exploring anymore
+            - One solution: lower ε over time
+            - Another solution: exploration functions
