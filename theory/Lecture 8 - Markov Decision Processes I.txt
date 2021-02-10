@@ -57,9 +57,9 @@ MDP's are non-deterministic search problems
 What is Markov about MDPs?
     - Markov meaning: given the present state, the future and the past are independent
     - For Markov decision processes, "Markov" means that the probability distribution over the outcomes depends only on the current state and action
-    - just like search, where the sucessor funciton could only depend on the current state (not the history)
+    - just like search, where the sucessor function could only depend on the current state (not the history)
 
-**For MDP problem, make sure to define the transition function and your state such a wat that the transition probabilities depend only on the current state and an action**
+**For MDP problem, make sure to define the transition function and your state such a what that the transition probabilities depend only on the current state and an action**
 
 
 Policies
@@ -78,7 +78,7 @@ Policies
         - and wherever you landed, expectimax is ran again
     - expectimax is a way of solving this problems, but it doesn't comput and explicit policy
         - bad: you might have to redo a lot of work if you keep ending up in the same states
-        - good: because if you have so many state you couldn't write down an explicit policy anyway
+        - good: because if you have so many states you couldn't write down an explicit policy anyway
 
 
 Policies and Living Penality
@@ -189,7 +189,7 @@ Values of States
             - the code is maximizing in one function and taking weighted average in another function
 
 
-Why expectimax is doing way too mych work?
+Why expectimax is doing way too much work?
     - states are repeated
         - Idea: only compute needed quantities once
     - search tree may be infinite
