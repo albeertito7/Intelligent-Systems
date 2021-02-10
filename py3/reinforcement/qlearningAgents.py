@@ -42,9 +42,9 @@ class QLearningAgent(ReinforcementAgent): ## now we are computing q-values inste
         ReinforcementAgent.__init__(self, **args)
 
         "*** YOUR CODE HERE ***"
-        ## structure dict to store Q(s,a), so mapping tuples (states,actions) to its value
-        self.values = util.Counter() ## init the structure where the q-values (s,a) will be stored
-        ##the key will be the state and action: and from this key will get a q-value
+        # structure dict to store Q(s,a), so mapping tuples (state, action) to its value
+        self.values = util.Counter() # init the structure where the q-values (s,a) will be stored
+        # the key will be the state and action: and from this key will get a q-value
 
     def getQValue(self, state, action):
         """
@@ -69,7 +69,7 @@ class QLearningAgent(ReinforcementAgent): ## now we are computing q-values inste
         "*** YOUR CODE HERE ***"
         legalActions = self.getLegalActions(state) #do we have legal actions?
         if len(legalActions) == 0:
-          return 0.0 ##if there's no legal action -> terminal state?
+          return 0.0 # if there's no legal action -> terminal state?
         tmp = util.Counter() # temporal hash to store the maximum
         for action in legalActions: #explore all the legal actions
             tmp[action] = self.getQValue(state, action)
@@ -125,9 +125,9 @@ class QLearningAgent(ReinforcementAgent): ## now we are computing q-values inste
           it will be called on your behalf
         """
         "*** YOUR CODE HERE ***"
-        oldQValue = self.values[(state, action)] ## this the utility the system thinks 
+        oldQValue = self.values[(state, action)] # this the utility the system thinks 
         sample = reward + self.discount * self.computeValueFromQValues(nextState)
-        #self.values[(state, action)] = (1 - self.alpha) * oldQValue + self.alpha * sample
+        # self.values[(state, action)] = (1 - self.alpha) * oldQValue + self.alpha * sample
         self.values[(state, action)] = oldQValue + self.alpha * (sample - oldQValue) # alegraic developing from the previous notation
         # util.raiseNotDefined()
 
