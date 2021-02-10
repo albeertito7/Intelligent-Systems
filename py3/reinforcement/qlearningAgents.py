@@ -18,7 +18,7 @@ from featureExtractors import *
 
 import random,util,math
 
-class QLearningAgent(ReinforcementAgent):
+class QLearningAgent(ReinforcementAgent): ## now we are computing q-values instead of values
     """
       Q-Learning Agent
 
@@ -43,7 +43,8 @@ class QLearningAgent(ReinforcementAgent):
         ReinforcementAgent.__init__(self, **args)
 
         "*** YOUR CODE HERE ***"
-        self.values = util.Counter() ## init the structure where the q-values will be stored
+        ## structure dict to store Q(s,a), so mapping tuples (states,actions) to its value
+        self.values = util.Counter() ## init the structure where the q-values (s,a) will be stored
         ##the key will be the state and action: and from this key will get a q-value
 
     def getQValue(self, state, action):
@@ -53,13 +54,13 @@ class QLearningAgent(ReinforcementAgent):
           or the Q node value otherwise
         """
         "*** YOUR CODE HERE ***"
-        if(state, action) not in self.values: ## state exists?
-          self.values[(state, action)] = 0.0
-        return self.values[(state, action)]
-        #util.raiseNotDefined()
+        if (state, action) not in self.values: # q-state exists?
+          self.values[(state, action)] = 0.0 # if it's the first time
+        return self.values[(state, action)] # if not just return the value
+        # util.raiseNotDefined()
 
 
-    def computeValueFromQValues(self, state):
+    def computeValueFromQValues(self, state): # to calc maxQ(s,a) = V(s) that corresponds to the future expected utility
         """
           Returns max_action Q(state,action)
           where the max is over legal actions.  Note that if
@@ -69,14 +70,14 @@ class QLearningAgent(ReinforcementAgent):
         "*** YOUR CODE HERE ***"
         legalActions = self.getLegalActions(state) #do we have legal actions?
         if len(legalActions) == 0:
-          return 0.0
-        temp = util.Counter() # temporal hash
+          return 0.0 ##if there's no legal action -> terminal state?
+        tmp = util.Counter() # temporal hash to store the maximum
         for action in legalActions: #explore all the legal actions
-            temp[action] = self.getQValue(state, action)
-        return temp[temp.argMax()] # return the maximum Q(state, action)
-        #util.raiseNotDefined()
+            tmp[action] = self.getQValue(state, action)
+        return tmp[tmp.argMax()] # return the maximum Q(state, action), returning the max q-value
+        # util.raiseNotDefined()
 
-    def computeActionFromQValues(self, state):
+    def computeActionFromQValues(self, state): # needed for policy extraction, extract the best action possible till the moment
         """
           Compute the best action to take in a state.  Note that if there
           are no legal actions, which is the case at the terminal state,
@@ -89,7 +90,7 @@ class QLearningAgent(ReinforcementAgent):
         tmp = util.Counter() # temporal hash
         for action in legalActions: # explore all the legal actions
             tmp[action] = self.getQValue(state, action)
-        return tmp.argMax()
+        return tmp.argMax() # now we extract the action that maximizes the expected state value
         # util.raiseNotDefined()
 
     def getAction(self, state):
@@ -104,20 +105,18 @@ class QLearningAgent(ReinforcementAgent):
           HINT: To pick randomly from a list, use random.choice(list)
         """
         # Pick Action
-        legalActions = self.getLegalActions(state)
+        legalActions = self.getLegalActions(state) # get actions cuz we'll need to decide among them
         action = None
         "*** YOUR CODE HERE ***"
-        if len(legalActions) != 0:
-          if util.flipCoin(self.epsilon):
+        if len(legalActions) != 0: # are there some legal actions?
+          if util.flipCoin(self.epsilon): # as we are using random choice, we simply flip a coin -> modelling that by using epsilon
             # exploration
             action = random.choice(legalActions) # take a random action
           else:
             # explotation
-            action = self.computeActionFromQValues(state) # the best action (max)
+            action = self.computeActionFromQValues(state) # the best action (max), follow the best policy learned till now
         return action
         #util.raiseNotDefined()
-
-        return action
 
     def update(self, state, action, nextState, reward):
         """
@@ -131,15 +130,15 @@ class QLearningAgent(ReinforcementAgent):
         "*** YOUR CODE HERE ***"
         oldQValue = self.values[(state, action)] ## this the utility the system thinks 
         sample = reward + self.discount * self.computeValueFromQValues(nextState)
-
-        self.values[(state, action)] = (1 - self.alpha) * oldQValue + self.alpha * sample
+        #self.values[(state, action)] = (1 - self.alpha) * oldQValue + self.alpha * sample
+        self.values[(state, action)] = oldQValue + self.alpha * (sample - oldQValue) # alegraic developing from the previous notation
         # util.raiseNotDefined()
 
     def getPolicy(self, state):
-        return self.computeActionFromQValues(state)
+        return self.computeActionFromQValues(state) # we want to extract the actions from the Q-Values got -> policy extraction
 
     def getValue(self, state):
-        return self.computeValueFromQValues(state)
+        return self.computeValueFromQValues(state) # get the Value of a State from its Q-Values, to evaluation how good or bad is it -> policy evaluation
 
 
 class PacmanQAgent(QLearningAgent):
