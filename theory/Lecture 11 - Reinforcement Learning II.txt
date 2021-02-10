@@ -95,3 +95,25 @@ Exploration Functions -> When to explore?
             - rather than looking at just utilities of Q-states, we have a function that considers our guests at the utility and the number of times we've been there
             - n means the number of times we've tried that option out
             - so we take the utility and add an optimism bonus, that decreses as we visit the state more times n
+
+
+Regret
+    - even if we learn the optimal policy, we still make mistakes along the way
+    - regret is a measure of our total mistake cost: the difference between our (expected) rewards, including youthful suboptimally, and optimal (expected) rewards
+    - minimizing regret goes beyond learning to be optimal - it requires optimally learning to be optimal
+    - example: random exploration and exploration functions both end up optimal, but random exploration has higher regret
+    - minimizing regret is more like optimally learning to be optimal
+
+
+** So, what we could do in a game like pac-man? **
+    - there are so many states and we can't learn about each one
+    - Idea: when we learn that one experience go scary, we should transfer that to all other similar states
+    - when we learn ghost are scary we should transfer that to all other similar states
+
+Approximate Q-Learning
+
+    - Basic Q-Learning keeps a table of all q-values -> thats fine when there aren't too many q-states
+
+    - In realistic situation, we cannot possibly learn about every single state!
+        - too many states to visit them all in training
+        - too many states to hold the q-tables in memory
