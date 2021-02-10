@@ -13,7 +13,7 @@ Uncertainty and Utilities
     - actions can fail: when moving a robot, wheels might slip
 
 - any action taken will have some uncertainty
-    - values should now reflext average-case outcomes, not worst-case (optimal) (minimax) outcomes
+    - values should now reflex average-case outcomes, not worst-case (optimal) (minimax) outcomes
     - replace all the min values by averages -> EXPECTED VALUES
 
 
@@ -76,7 +76,7 @@ When we decide to use Minimax or Expectimax?
     - key modelling choice is: Are the outcomes out of our control, adversarial or chance?
 
 
-The Dangers of Optiimism and Pessimism
+The Dangers of Optimism and Pessimism
 
 - Dangerous Optimism: Assuming chance when the world is adversarial
     - assuming things are only happening according to chance
@@ -96,7 +96,7 @@ Exemples of Modelling:
     - if AdversarialGhost and Dangerous Optimism -> Expectimax -> assuming chance when actually is optimal
 ---------------------------------------------------
 
-**If pacman is models overly optimistic, might actually die**
+**If pacman is overly optimistic, might actually die**
 
 
 Expectiminimax?
