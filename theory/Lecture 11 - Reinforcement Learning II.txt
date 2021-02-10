@@ -133,3 +133,20 @@ Approximate Q-Learning
             - Is Pacman in a tunnel? (0/!) ... etc
         - can also describe a q-state (s,a) with features
             - e.g. action moves closer to food
+
+
+Linear Value Functions
+    - using a feature representation, we can write a q function (or value function) for any state using a few weights -> linear decomposition
+        V(s) = w1·f1(s) + w2·f2(s) + ... + wn·fn(s)
+        Q(s,a) = w1·f1(s,a) + w2·f2(s,a) + ... + wn·fn(s,a)
+    
+    - Advantage: our experience is summed up in a few powerful numbers
+    - Disadvantage: stats may share features but actually be very different in value!
+
+
+Approximate Q-Learning
+    - Q(s,a) = w1·f1(s,a) + w2·f2(s,a) + ... + wn·fn(s,a)
+    - Q-learning with q-functions
+
+    - transition = (s,a,r,s')
+    - difference = [R(s,a,s') + λ · (maxQ(s',a') over all a')] - Q(s,a)
