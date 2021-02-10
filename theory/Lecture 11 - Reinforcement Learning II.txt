@@ -83,4 +83,11 @@ How to Explore? -> how to select actions?
         - the exploration is unstructured -> you try random things wheter is needed or not even if you know what the actions do
         - if you know what all the actions do you shouldn't necessarily be exploring anymore
             - One solution: lower ε over time
-            - Another solution: exploration functions
+            - Another better solution: exploration functions
+
+Exploration Functions -> When to explore?
+    - Random actions: explore a fixed amount -> every state has an equal chance of handling an exploration action
+    - Better idea: explore areas whose badness is not (yet) extablished, eventually stop exploring
+        - in the face of uncertainty we should have optimism
+        - but should last forever, so it might has a function like
+            f(u, n) = u + k/n
