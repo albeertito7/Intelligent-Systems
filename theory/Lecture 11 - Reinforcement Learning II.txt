@@ -149,4 +149,5 @@ Approximate Q-Learning
     - Q-learning with q-functions
 
     - transition = (s,a,r,s')
-    - difference = [R(s,a,s') + λ · (maxQ(s',a') over all a')] - Q(s,a)
+    - difference = [R(s,a,s') + λ · (maxQ(s',a') over all a')] - Q(s,a)  (difference = error between what you get and what you though were gonna get)
+    - update Exact Q's: Q(s,a) = Q(s,a) + α·[difference]
