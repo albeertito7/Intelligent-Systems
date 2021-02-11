@@ -63,7 +63,7 @@ class ValueIterationAgent(ValueEstimationAgent):
         # Write value iteration code here
         "*** YOUR CODE HERE ***"
         for i in range(self.iterations): # k steps/iterations depth
-            values = util.Counter()
+            values = util.Counter() # we can obviate this and just use self.values applying the batching value iteration algorithm
 
             # need to explore all the states -> we want to compute a policy
             for state in self.mdp.getStates():
@@ -158,16 +158,17 @@ class AsynchronousValueIterationAgent(ValueIterationAgent):
 
     def runValueIteration(self):
         "*** YOUR CODE HERE ***"
-        """states = self.mdp.getStates()
-        num_states = len(states)
-        for i in range(self.iterations):
+        states = self.mdp.getStates() # states to evaluate
+        num_states = len(states) # how many states do we have?
+
+        for i in range(self.iterations): # iterations steps as value iteration
           state = states[i % num_states]
           if not self.mdp.isTerminal(state):
             values = []
             for action in self.mdp.getPossibleActions(state):
               q_value = self.computeQValueFromValues(state, action)
               values.append(q_value)
-            self.values[state] = max(values)"""
+            self.values[state] = max(values)
 
 class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
     """
