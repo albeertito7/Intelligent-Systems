@@ -17,7 +17,7 @@ from featureExtractors import *
 
 import random,util,math
 
-class QLearningAgent(ReinforcementAgent): ## now we are computing q-values instead of values
+class QLearningAgent(ReinforcementAgent): # now we are computing q-values instead of values
     """
       Q-Learning Agent
 
@@ -56,7 +56,7 @@ class QLearningAgent(ReinforcementAgent): ## now we are computing q-values inste
         if (state, action) not in self.values: # q-state exists?
           self.values[(state, action)] = 0.0 # if it's the first time
         return self.values[(state, action)] # if not just return the value
-        # util.raiseNotDefined()
+        #util.raiseNotDefined()
 
 
     def computeValueFromQValues(self, state): # to calc maxQ(s,a) = V(s) that corresponds to the future expected utility
@@ -74,7 +74,7 @@ class QLearningAgent(ReinforcementAgent): ## now we are computing q-values inste
         for action in legalActions: #explore all the legal actions
             tmp[action] = self.getQValue(state, action)
         return tmp[tmp.argMax()] # return the maximum Q(state, action), returning the max q-value
-        # util.raiseNotDefined()
+        #util.raiseNotDefined()
 
     def computeActionFromQValues(self, state): # needed for policy extraction, extract the best action possible till the moment
         """
@@ -90,7 +90,7 @@ class QLearningAgent(ReinforcementAgent): ## now we are computing q-values inste
         for action in legalActions: # explore all the legal actions
             tmp[action] = self.getQValue(state, action)
         return tmp.argMax() # now we extract the action that maximizes the expected state value
-        # util.raiseNotDefined()
+        #util.raiseNotDefined()
 
     def getAction(self, state):
         """
@@ -129,7 +129,7 @@ class QLearningAgent(ReinforcementAgent): ## now we are computing q-values inste
         sample = reward + self.discount * self.computeValueFromQValues(nextState)
         # self.values[(state, action)] = (1 - self.alpha) * oldQValue + self.alpha * sample
         self.values[(state, action)] = oldQValue + self.alpha * (sample - oldQValue) # alegraic developing from the previous notation
-        # util.raiseNotDefined()
+        #util.raiseNotDefined()
 
     def getPolicy(self, state):
         return self.computeActionFromQValues(state) # we want to extract the actions from the Q-Values got -> policy extraction
@@ -197,7 +197,7 @@ class ApproximateQAgent(PacmanQAgent):
         for f in features: # for each feature, we weighted it by its weight -> linear function where Q(s,a) = w1·f1(s,a) ... wn·fn(s,a)
           qvalue += self.getWeights()[f] * features[f]
         return qvalue
-        # util.raiseNotDefined()
+        #util.raiseNotDefined()
 
     def update(self, state, action, nextState, reward):
         """
@@ -213,7 +213,7 @@ class ApproximateQAgent(PacmanQAgent):
         # iteration
         for f in features:
           self.weights[f] = self.weights[f] + self.alpha * (difference) * features[f] # updating the weights
-        # util.raiseNotDefined()
+        #util.raiseNotDefined()
 
     def final(self, state):
         "Called at the end of each game."
