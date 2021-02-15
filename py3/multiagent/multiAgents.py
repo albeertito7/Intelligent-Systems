@@ -166,7 +166,6 @@ class MinimaxAgent(MultiAgentSearchAgent):
         Returns whether or not the game state is a losing state
         """
         "*** YOUR CODE HERE ***"
-        # util.raiseNotDefined()
 
         # implementation functions for doing minimax-decision algorithm
         import sys
@@ -187,7 +186,6 @@ class MinimaxAgent(MultiAgentSearchAgent):
         def terminalTest(gameState, depth): # how much depth is left? how much further pacman can go through the tree? ## self.depth is not this one
           return depth == 0 or gameState.isWin() or gameState.isLose() # from the terminal states it's possible to calc the utility value
 
-        ## 
         def max_value(gameState, agent, depth):
           if terminalTest(gameState, depth): # is a terminal state or need to stop going deeper
             return utility(gameState) # returns the score value
@@ -198,31 +196,31 @@ class MinimaxAgent(MultiAgentSearchAgent):
             v = max(v, min_value(result(gameState, agent, action), 1, depth)) # 1 cuz the next agent is the first ghost
           return v
 
-        ##
         def min_value(gameState, agent, depth):
           if terminalTest(gameState, depth):
             return utility(gameState)
-          v = sys.maxsize ## represents infinite, temporal variable, need to find the min of the values
+          v = sys.maxsize # represents infinite, temporal variable, need to find the min of the values
           for action in actions(gameState, agent):
-            if(agent == gameState.getNumAgents()-1): ## minus 1 cuz the max player needs to be removed from the agents count
-              v = min(v, max_value(result(gameState, agent, action), 0, depth-1)) ## 0 cuz the next player to move is the max one, depth-1 we got a move
+            if(agent == gameState.getNumAgents()-1): # minus 1 cuz the max player needs to be removed from the agents count
+              v = min(v, max_value(result(gameState, agent, action), 0, depth-1)) # 0 cuz the next player to move is the max one, depth-1 we got a move
             else:
-              v = min(v, min_value(result(gameState, agent, action), agent+1, depth)) ## the same depth, a move is not completed
+              v = min(v, min_value(result(gameState, agent, action), agent+1, depth)) # the same depth, a move is not completed
           return v
 
-        ## return action!!! ## minimax-decision algorithm applied
+        # return action!!! # minimax-decision algorithm applied
         v = -sys.maxsize
         actionSet = []
-        for action in actions(gameState, 0): ## agent 0 (pacman) which is the one who apply the minimax-decision function
+        for action in actions(gameState, 0): # agent 0 (pacman) which is the one who apply the minimax-decision function
           u = min_value(result(gameState, 0, action), 1, self.depth) ## the depth specified for the user ## 1 cuz the next agent is 0+1, a ghost
-          if u == v: ## if the value is equal, add to the set of actions
+          if u == v: # if the value is equal, add to the set of actions
             actionSet.append(action)
-          elif u > v: ## if its a better value (max), reinitialize the set of good actions
+          elif u > v: # if its a better value (max), reinitialize the set of good actions
             v = u
             actionSet = [action]
         
-        ## need to return the action that pacman must take
-        return random.choice(actionSet) ## random choice between all minimax actions got
+        # need to return the action that pacman must take
+        return random.choice(actionSet) # random choice between all minimax actions got
+        #util.raiseNotDefined()
 
 class AlphaBetaAgent(MultiAgentSearchAgent):
     """
@@ -371,7 +369,50 @@ def betterEvaluationFunction(currentGameState):
     DESCRIPTION: <write something here so we know what you did>
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    currentScore = currentGameState.getScore()
+    if currentGameState.isWin() or currentGameState.isLose():
+      return currentScore
+
+    def _scoreFromGhost(gameState):
+      score = 0
+      for ghost in gameState.getGhostStates():
+        disToGhost = manhattanDistance(gameState.getPacmanPosition(), ghost.getPosition())
+        if ghost.scaredTimer > 0:
+          score += pow(max(8 - disToGhost, 0), 2)
+        else:
+          score -= pow(max(7 - disToGhost, 0), 2)
+      return score
+
+    def _scoreFromFood(gameState):
+      disToFood = []
+      [disToFood.append(1.0/manhattanDistance(gameState.getPacmanPosition(), food)) for food in gameState.getFood().asList()]
+      if len(disToFood): return max(disToFood)
+      return 0
+
+    def _scoreFromCapsules(gameState):
+      score = []
+      [score.append(1.0/manhattanDistance(gameState.getPacmanPosition(), capsule)) for capsule in gameState.getCapsules()]
+      if len(score): return max(score)
+      return 0
+
+    def _scoreFromCapsulesNotScaryGhosts(gameState):
+      score = []
+      [score.append(max(1.0/manhattanDistance(gameState.getPacmanPosition(), capsule) + _scoreFromGhost(gameState), 0)) for capsule in gameState.getCapsules()]
+      if len(score): return max(score)
+      return 0
+
+    scoreGhosts = _scoreFromGhost(currentGameState)
+    scoreFood = _scoreFromFood(currentGameState)
+    scoreCapsules = _scoreFromCapsules(currentGameState)
+    scoreScary = _scoreFromCapsulesNotScaryGhosts(currentGameState)
+
+    return currentScore + 0.3*scoreGhosts + 0.2*scoreFood + 0.1*scoreCapsules + 0.3*scoreScary
+    # linear weighted featured equation
+
+""" 
+would be interesting to use the mazeDistance(point1, point2, gameState) function from search.searchAgents
+to compute the
+"""
 
 # Abbreviation
 better = betterEvaluationFunction
