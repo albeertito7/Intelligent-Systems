@@ -369,49 +369,67 @@ def betterEvaluationFunction(currentGameState):
     DESCRIPTION: <write something here so we know what you did>
     """
     "*** YOUR CODE HERE ***"
-    currentScore = currentGameState.getScore()
-    if currentGameState.isWin() or currentGameState.isLose():
-      return currentScore
+    currentGameScore = currentGameState.getScore()
+    if currentGameState.isWin() or currentGameState.isLose(): # base condition
+      return currentGameScore
 
-    def _scoreFromGhost(gameState):
+    # defining featured functions
+    def evaluateGhosts(gameState):
       score = 0
       for ghost in gameState.getGhostStates():
         disToGhost = manhattanDistance(gameState.getPacmanPosition(), ghost.getPosition())
         if ghost.scaredTimer > 0:
-          score += pow(max(8 - disToGhost, 0), 2)
+          score += max(65.0/disToGhost, 0)
         else:
-          score -= pow(max(7 - disToGhost, 0), 2)
+          score -= max(1.0/disToGhost, 0)
       return score
 
-    def _scoreFromFood(gameState):
+    def evaluateFood(gameState):
       disToFood = []
       [disToFood.append(1.0/manhattanDistance(gameState.getPacmanPosition(), food)) for food in gameState.getFood().asList()]
       if len(disToFood): return max(disToFood)
       return 0
 
-    def _scoreFromCapsules(gameState):
+    def evaluateCapsules(gameState):
       score = []
       [score.append(1.0/manhattanDistance(gameState.getPacmanPosition(), capsule)) for capsule in gameState.getCapsules()]
       if len(score): return max(score)
       return 0
 
-    def _scoreFromCapsulesNotScaryGhosts(gameState):
+    """def evaluateCapsulesNotScaryGhosts(gameState):
       score = []
       [score.append(max(1.0/manhattanDistance(gameState.getPacmanPosition(), capsule) + _scoreFromGhost(gameState), 0)) for capsule in gameState.getCapsules()]
       if len(score): return max(score)
-      return 0
+      return 0"""
 
-    scoreGhosts = _scoreFromGhost(currentGameState)
-    scoreFood = _scoreFromFood(currentGameState)
-    scoreCapsules = _scoreFromCapsules(currentGameState)
-    scoreScary = _scoreFromCapsulesNotScaryGhosts(currentGameState)
+    scoreGhosts = evaluateGhosts(currentGameState)
+    scoreFood = evaluateFood(currentGameState)
+    scoreCapsules = evaluateCapsules(currentGameState)
+    #scoreScary = evaluateCapsulesNotScaryGhosts(currentGameState)
 
-    return currentScore + 0.3*scoreGhosts + 0.2*scoreFood + 0.1*scoreCapsules + 0.3*scoreScary
-    # linear weighted featured equation
+    return currentGameScore + scoreGhosts + scoreFood + scoreCapsules #+ scoreScary
+    # linear featured equation, which may contain non-linear functions as is used maximization internally in some of them
 
 """ 
-would be interesting to use the mazeDistance(point1, point2, gameState) function from search.searchAgents
-to compute the
+Note: would be interesting to use the mazeDistance(point1, point2, gameState) function from search.searchAgents
+
+Question q5: Results
+===========
+
+Pacman emerges victorious! Score: 1363
+Pacman emerges victorious! Score: 1168
+Pacman emerges victorious! Score: 1286
+Pacman emerges victorious! Score: 1168
+Pacman emerges victorious! Score: 1326
+Pacman emerges victorious! Score: 1357
+Pacman emerges victorious! Score: 1327
+Pacman emerges victorious! Score: 1340
+Pacman emerges victorious! Score: 1342
+Pacman emerges victorious! Score: 1365
+Average Score: 1304.2
+Scores:        1363.0, 1168.0, 1286.0, 1168.0, 1326.0, 1357.0, 1327.0, 1340.0, 1342.0, 1365.0
+Win Rate:      10/10 (1.00)
+Record:        Win, Win, Win, Win, Win, Win, Win, Win, Win, Win
 """
 
 # Abbreviation
