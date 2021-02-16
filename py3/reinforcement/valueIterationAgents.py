@@ -31,7 +31,7 @@ import mdp, util
 from learningAgents import ValueEstimationAgent
 import collections
 
-class ValueIterationAgent(ValueEstimationAgent):
+class ValueIterationAgent(ValueEstimationAgent): # offline planner -> knowing the whole MDP problem, the transition model T(s,a,s') = P(s'|s,a) and the reward function R(s,a,s')
     """
         * Please read learningAgents.py before reading this.*
 
@@ -59,14 +59,13 @@ class ValueIterationAgent(ValueEstimationAgent):
         self.values = util.Counter() # A Counter is a dict with default 0
         self.runValueIteration()
 
-    def runValueIteration(self):
+    def runValueIteration(self): # value iteration algorithm time complexity 0((S^2)A) where S = states, and A = actions
         # Write value iteration code here
         "*** YOUR CODE HERE ***"
         for i in range(self.iterations): # k steps/iterations depth
             values = util.Counter() # we can obviate this and just use self.values applying the batching value iteration algorithm
 
-            # need to explore all the states -> we want to compute a policy
-            for state in self.mdp.getStates():
+            for state in self.mdp.getStates(): # need to explore all the states -> we want to compute a policy
                 # compute all q-values for each possible action for the state
                 """QValueForAction = util.Counter() ## keys are actions, values are q-values
                 for action in self.mdp.getPossibleActions(state):
@@ -83,7 +82,6 @@ class ValueIterationAgent(ValueEstimationAgent):
           Return the value of the state (computed in __init__).
         """
         return self.values[state]
-
 
     def computeQValueFromValues(self, state, action):
         """
@@ -117,7 +115,7 @@ class ValueIterationAgent(ValueEstimationAgent):
             QvalueForAction[action] = self.computeQValueFromValues(state, action) # one step look ahead
         
         return QvalueForAction.argMax()
-        util.raiseNotDefined()
+        #util.raiseNotDefined()
 
     def getPolicy(self, state):
         return self.computeActionFromValues(state)
