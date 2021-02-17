@@ -205,14 +205,13 @@ class PrioritizedSweepingValueIterationAgent(AsynchronousValueIterationAgent):
             pq.update(state, - diff)
 
         for i in range(self.iterations):
-          if pq.isEmpty():
-            break
-          temp_state = pq.pop()
-          if not self.mdp.isTerminal(temp_state):
-            self.values[temp_state] = self.computeValuesFromQValues(temp_state)
+          if pq.isEmpty(): break
+          tmp = pq.pop()
+          if not self.mdp.isTerminal(tmp):
+            self.values[tmp] = self.computeValuesFromQValues(tmp)
 
-          for p in predecessors[temp_state]:
-            if not self.mdp.isTerminal(p):
-              diff = abs(self.computeValuesFromQValues(p) - self.values[p])
+          for predecessor in predecessors[tmp]:
+            if not self.mdp.isTerminal(predecessor):
+              diff = abs(self.computeValuesFromQValues(predecessor) - self.values[predecessor])
               if diff > self.theta:
-                pq.update(p, -diff)
+                pq.update(predecessor, -diff)
