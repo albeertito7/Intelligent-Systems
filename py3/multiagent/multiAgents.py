@@ -333,7 +333,7 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
             if(agent == gameState.getNumAgents()-1):
               v.append(max_value(result(gameState, agent, action), 0, depth-1))
             else:
-              v.append(min_value(result(gameState, agent, action), agent+1, depth))
+              v.append(exp_value(result(gameState, agent, action), agent+1, depth))
           return sum(v)/float(len(v)) # non-weighted average
           
           """
